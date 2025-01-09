@@ -1,0 +1,9 @@
+https://stackoverflow.com/questions/926916/how-to-get-the-bodys-content-of-an-iframe-in-javascript
+
+https://www.w3schools.com/html/html_iframe.asp
+
+https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_embed_html
+
+CNAME custom URL - from a DNS provider - might have to pay money for that!
+
+https://www.w3schools.com/html/tryit.asp?filename=tryhtml_id_class

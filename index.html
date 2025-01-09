@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <!-- Suggested for phose compatability -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title and icons -->
+    <link href="src/boomcon.jpg" sizes="16x16" rel="icon"/>
+    <title>OHRW/OHRF</title>
+
+    <!-- Styling -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Scripts, native and API -->
+    <script src="main.js"></script>
+</head>
+<body>
+    <!-- Title/Ribbon div -->
+    <div id="title" w3-include-html="ribbon.html"></div>
+    <br>
+
+    <!-- Main content div -->
+    <div class="flexdiv" id="content" w3-include-html="html-files/home.html">
+    </div>
+    <br>
+
+    <!-- Footer div -->
+    <div id="footer">
+        <span id="testout"></span>
+    </div>
+
+</body>
+
+<!-- Post-load scripts -->
+<script>
+    initPage();
+</script>
