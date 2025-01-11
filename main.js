@@ -118,7 +118,7 @@ function expandToWindow() {
         return;
     }
 
-    if (document.body.clientHeight > window.innerHeight) {
+    if (document.body.clientHeight * 0.9 > window.innerHeight) {
         footerwrapper.style.position = "relative";
         footer.style.position = "relative";
     } else {
