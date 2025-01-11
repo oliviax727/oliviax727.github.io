@@ -11,9 +11,9 @@ body {
   background-color: black;
   font-family: "Open Sans", Verdana, Geneva, Tahoma, sans-serif;
   color: white;
-
   overflow-wrap: break-word;
   word-wrap: break-word;
+  position: relative;
 }
 
 /* Da Linkys */
@@ -169,10 +169,21 @@ a:active {
 
 /* Footer Div (constant in all webpages) */
 
-#footer {
+.footer-wrapper {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  top: inherit;
+}
+
+.footer {
+  min-height: 100%;
   background-color: #666;
-  width: inherit;
+  width: 100%;
   display: block;
   padding: 1%;
   margin: 0%;
+  justify-content: center;
+  text-align: center;
+  position: fixed;
 }

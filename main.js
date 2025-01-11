@@ -60,12 +60,14 @@ function hideSubList(section) {
 function initPage() {
     includeHTML(() => {
         updateAges();
+        expandToWindow();
     });
 }
 
 function loadPage() {
     includeHTML(() => {
         updateAges();
+        expandToWindow();
     });
 }
 
@@ -94,12 +96,35 @@ function updateAges() {
         } else {
             span.innerHTML = agediff
         }
+
+        span.classList.remove("age");
     }
 }
 
 // Change ribbon to Sidebar if webpage is too small
 function crunchRibbon() {
 
+}
+
+// Alter footer if body is too big
+function expandToWindow() {
+    var footer, footerwrapper
+
+    footerwrapper = document.getElementById("footer-wrapper");
+    footer = document.getElementById("footer");
+
+    // Don't expand if footer hasn't loaded yet
+    if (footerwrapper == null || footer == null) {
+        return;
+    }
+
+    if (document.body.clientHeight > window.innerHeight) {
+        footerwrapper.style.position = "relative";
+        footer.style.position = "relative";
+    } else {
+        footerwrapper.style.position = "absolute";
+        footer.style.position = "fixed";
+    }
 }
 
 // XHTML integration to allow all of the pages to be inserted into eachother (W3 Schools)
@@ -136,7 +161,7 @@ function includeHTML(_callback) {
                     elmnt.removeAttribute("w3-include-html");
 
                     // Recursive call
-                    console.log(file);
+                    console.log("Loaded "+file);
                     includeHTML(_callback);
 
                     // XHTTP doesn't like async/await, so just do it every time the XHTTP is loaded
