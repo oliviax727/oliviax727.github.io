@@ -186,3 +186,12 @@ a:active {
   text-align: center;
   position: relative;
 }
+
+#footer button {
+  background-color: #444;
+  border: solid;
+  border-color: white;
+  border-width: 3px;
+  font-family: "Open Sans", Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}

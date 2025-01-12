@@ -60,6 +60,9 @@ function hideSubList(section) {
 function initPage() {
     includeHTML(() => {
         updateAges();
+        if (document.getElementById("footer") != null){
+            write("bones.txt", "hi");
+        }
         //expandToWindow();
     });
 }
@@ -128,8 +131,39 @@ function expandToWindow() {
     }
 }
 
+// ===== FILE HANDLING ===== //
+
+// Read file via XHTTP and use it
+function read(_callback, file) {
+    // Create an XMLHttpRequest object
+    const xhttp = new XMLHttpRequest();
+
+    // On data retreival
+    xhttp.onload = function() {
+        console.log("Loaded "+file)
+        _callback();
+    }
+
+    // Send a request
+    xhttp.open("GET", file);
+    xhttp.send();
+    return;
+}
+
+function write(file, data) {
+    // Requiring fs module in which
+    // writeFile function is defined.
+    const fs = require('fs')
+
+    // Write data
+    fs.writeFile(file, data, (err) => {
+        // In case of a error throw err.
+        if (err) throw err;
+    })
+}
+
 // XHTML integration to allow all of the pages to be inserted into eachother (W3 Schools)
-function includeHTML(_callback) {
+function includeHTML(_callback, _fileload=null) {
     var z, i, elmnt, file, xhttp;
 
     // Loop through a collection of all HTML elements:
@@ -155,7 +189,7 @@ function includeHTML(_callback) {
                     else {
                         elmnt.innerHTML =
                             "There was some unidentified issue stopping the webpage from loading." +
-                            "\nError Status: "+this.status
+                            "\nError Status: "+this.status;
                     }
 
                     // Remove the attribute, and call this function once more:
