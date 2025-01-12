@@ -1,7 +1,16 @@
 <div id="footer" class="footer">
-    <button onclick="dig4Bones();">Dig for Bones</button>
-    <p>Bones: <span id="count-bones">0</span>; 
-    Gold: <span id="count-gold">0</span></p>
+    <button onclick="dig4Bones(true);">Dig for Bones</button>
+    <p>Bones: <span id="count-bones">0</span>; Gold: <span id="count-gold">0</span></p>
+    <p>Auto-Miner Level: <span id="count-level">0</span></p>
+    <p>
+        <button id="create-auto" onclick="createAutoMiner();">Buy Auto-Miner (500 Bones)</button>
+    </p>
+    <p>
+        <button hidden id="upgrade-auto" onclick="upgradeAutoMiner();">
+            Upgrade Auto-Miner (500 Bones & 1 Gold)
+        </button>
+    </p>
+    <br>
     <p>Contact Email: <a href="mailto:oliviahrwalters@gmail.com">oliviahrwalters@gmail.com</a></p>
     <p>This webpage was built using GitHub Pages</p>
     <button onclick="location.href='https://github.com/oliviax727/oliviax727.github.io'">

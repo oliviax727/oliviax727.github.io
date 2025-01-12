@@ -30,6 +30,15 @@ a:active {
   color: red;
 }
 
+button {
+  background-color: #444;
+  border: solid;
+  border-color: white;
+  border-width: 3px;
+  font-family: "Open Sans", Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+
 /* Title Div */
 
 #title {
@@ -174,6 +183,9 @@ a:active {
   position: relative;
   bottom: 0;
   top: inherit;
+  border-top: solid;
+  border-top-color: white;
+  border-top-width: 1px;
 }
 
 .footer {
@@ -185,13 +197,4 @@ a:active {
   justify-content: center;
   text-align: center;
   position: relative;
-}
-
-#footer button {
-  background-color: #444;
-  border: solid;
-  border-color: white;
-  border-width: 3px;
-  font-family: "Open Sans", Verdana, Geneva, Tahoma, sans-serif;
-  color: white;
 }

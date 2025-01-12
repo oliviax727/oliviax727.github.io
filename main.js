@@ -20,11 +20,16 @@ const SECTION_COLOR_DICT = new Map([
 
 const CURRENT_DATE = new Date();
 
-// ===== ACTIVE UPDATING ===== //
+let timer = null;
+let timerinterval = 1000;
+
+// ===== BONES ===== //
 
 // Funny-Haha Bone Counter. Bones reset on page load
-function dig4Bones() {
+function dig4Bones(makealert=false) {
     var bones, gold, find
+
+    if (!makealert) { console.log("Digging ...") }
 
     // Get bone counter footer element
     bones = document.getElementById("count-bones");
@@ -32,17 +37,67 @@ function dig4Bones() {
 
     find = Math.random();
 
-    if (find < 0.001) {
-        alert("You've struck gold!");
+    if (find < 0.005) {
+        if (makealert) { alert("You've struck gold!"); }
         gold.innerHTML = parseInt(gold.innerHTML) + 1;
     } else if (find <= 0.5) {
         let foundbones = Math.floor(1/find - 1);
-        alert("You found "+foundbones+" bone(s)!");
+        if (makealert) { alert("You found "+foundbones+" bone(s)!"); }
         bones.innerHTML = parseInt(bones.innerHTML) + foundbones;
     } else {
-        alert("You got no bones :(");
+        if (makealert) { alert("You got no bones :("); }
     }
 }
+
+function createAutoMiner() {
+    // Get bone counter footer element, requires 500 bones
+    let bones = document.getElementById("count-bones");
+
+    // Get buttons
+    let createbutton = document.getElementById("create-auto");
+    let upgradebutton = document.getElementById("upgrade-auto");
+    let level = document.getElementById("count-level");
+
+    if (bones.innerHTML >= 500) {
+        console.log("Creating Miner ...");
+        bones.innerHTML = parseInt(bones.innerHTML) - 500;
+        timer = window.setInterval(dig4Bones, timerinterval);
+        createbutton.hidden = true;
+        upgradebutton.hidden = false;
+        level.innerHTML = 1;
+    }
+}
+
+function upgradeAutoMiner() {
+    // Get gold counter footer element, requires 1 gold
+    let bones = document.getElementById("count-bones");
+    let gold = document.getElementById("count-gold");
+    let level = document.getElementById("count-level");
+
+    if (gold.innerHTML >= 1 && bones.innerHTML >= 500) {
+        if (timerinterval <= 100){
+            timerinterval = 1;
+            alert("Miner Fully Upgraded!");
+            document.getElementById("upgrade-auto").hidden = true;
+        } else {
+            timerinterval -= 100;
+        }
+
+        console.log("Upgrading Miner ...");
+
+        level.innerHTML = parseInt(level.innerHTML) + 1;
+        gold.innerHTML = parseInt(gold.innerHTML) - 1;
+        bones.innerHTML = parseInt(bones.innerHTML) - 500;
+        window.clearInterval(timer)
+        timer = window.setInterval(dig4Bones, timerinterval);
+
+        if (level.innerHTML == 11) {
+            level.innerHTML = "Max"
+        }
+    }
+}
+
+// ===== ACTIVE UPDATING ===== //
 
 // Change/update section
 function changeSection(section) {
