@@ -37,7 +37,7 @@ function dig4Bones() {
         gold.innerHTML = parseInt(gold.innerHTML) + 1;
     } else if (find <= 0.5) {
         let foundbones = Math.floor(1/find - 1);
-        alert("You found "+foundbones+" bones!");
+        alert("You found "+foundbones+" bone(s)!");
         bones.innerHTML = parseInt(bones.innerHTML) + foundbones;
     } else {
         alert("You got no bones :(");
