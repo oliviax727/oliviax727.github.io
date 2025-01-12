@@ -50,7 +50,7 @@ function dig4Bones(makealert=false) {
 }
 
 function createAutoMiner() {
-    // Get bone counter footer element, requires 500 bones
+    // Get bone counter footer element, requires 100 bones
     let bones = document.getElementById("count-bones");
 
     // Get buttons
@@ -58,9 +58,9 @@ function createAutoMiner() {
     let upgradebutton = document.getElementById("upgrade-auto");
     let level = document.getElementById("count-level");
 
-    if (bones.innerHTML >= 500) {
+    if (bones.innerHTML >= 100) {
         console.log("Creating Miner ...");
-        bones.innerHTML = parseInt(bones.innerHTML) - 500;
+        bones.innerHTML = parseInt(bones.innerHTML) - 100;
         timer = window.setInterval(dig4Bones, timerinterval);
         createbutton.hidden = true;
         upgradebutton.hidden = false;
