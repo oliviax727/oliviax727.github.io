@@ -1,4 +1,5 @@
 // ===== SETUP ===== //
+// I HATE CLIENT SIDE JS I MISS NODE BUT I'M NOT BOTHERED TO INTEGRATE IT
 
 // End-user check JS works
 console.info("This message should appear if the javascript integration has worked.")
@@ -20,6 +21,28 @@ const SECTION_COLOR_DICT = new Map([
 const CURRENT_DATE = new Date();
 
 // ===== ACTIVE UPDATING ===== //
+
+// Funny-Haha Bone Counter. Bones reset on page load
+function dig4Bones() {
+    var bones, gold, find
+
+    // Get bone counter footer element
+    bones = document.getElementById("count-bones");
+    gold = document.getElementById("count-gold");
+
+    find = Math.random();
+
+    if (find < 0.001) {
+        alert("You've struck gold!");
+        gold.innerHTML = parseInt(gold.innerHTML) + 1;
+    } else if (find <= 0.5) {
+        let foundbones = Math.floor(1/find - 1);
+        alert("You found "+foundbones+" bones!");
+        bones.innerHTML = parseInt(bones.innerHTML) + foundbones;
+    } else {
+        alert("You got no bones :(");
+    }
+}
 
 // Change/update section
 function changeSection(section) {
@@ -61,16 +84,18 @@ function initPage() {
     includeHTML(() => {
         updateAges();
         if (document.getElementById("footer") != null){
-            write("bones.txt", "hi");
+            //expandToWindow();
         }
-        //expandToWindow();
+        
     });
 }
 
 function loadPage() {
     includeHTML(() => {
         updateAges();
-        //expandToWindow();
+        if (document.getElementById("footer") != null){
+            //expandToWindow();
+        }
     });
 }
 
@@ -148,18 +173,6 @@ function read(_callback, file) {
     xhttp.open("GET", file);
     xhttp.send();
     return;
-}
-
-function write(file, data) {
-    // Requiring fs module in which
-    // writeFile function is defined.
-    const fs = require('fs')
-
-    // Write data
-    fs.writeFile(file, data, (err) => {
-        // In case of a error throw err.
-        if (err) throw err;
-    })
 }
 
 // XHTML integration to allow all of the pages to be inserted into eachother (W3 Schools)
