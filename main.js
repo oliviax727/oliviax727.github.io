@@ -60,14 +60,14 @@ function hideSubList(section) {
 function initPage() {
     includeHTML(() => {
         updateAges();
-        expandToWindow();
+        //expandToWindow();
     });
 }
 
 function loadPage() {
     includeHTML(() => {
         updateAges();
-        expandToWindow();
+        //expandToWindow();
     });
 }
 
@@ -107,6 +107,7 @@ function crunchRibbon() {
 }
 
 // Alter footer if body is too big
+// NB: DOES NOT EXECUTE
 function expandToWindow() {
     var footer, footerwrapper
 
@@ -118,7 +119,7 @@ function expandToWindow() {
         return;
     }
 
-    if (document.body.clientHeight * 0.9 > window.innerHeight) {
+    if (document.body.clientHeight > window.innerHeight) {
         footerwrapper.style.position = "relative";
         footer.style.position = "relative";
     } else {

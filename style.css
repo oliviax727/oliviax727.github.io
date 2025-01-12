@@ -170,8 +170,8 @@ a:active {
 /* Footer Div (constant in all webpages) */
 
 .footer-wrapper {
-  width: 100%;
-  position: absolute;
+  min-height: max-content;
+  position: relative;
   bottom: 0;
   top: inherit;
 }
@@ -179,11 +179,10 @@ a:active {
 .footer {
   min-height: 100%;
   background-color: #666;
-  width: 100%;
   display: block;
   padding: 1%;
   margin: 0%;
   justify-content: center;
   text-align: center;
-  position: fixed;
+  position: relative;
 }
