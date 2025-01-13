@@ -19,15 +19,15 @@ body {
 /* Da Linkys */
 
 a:link {
-  color: magenta;
+  color: orchid;
 }
 
 a:visited {
-  color: darkmagenta;
+  color: darkorchid;
 }
 
 a:active {
-  color: red;
+  color: lavender;
 }
 
 button {
