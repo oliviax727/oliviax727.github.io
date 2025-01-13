@@ -122,7 +122,9 @@ function showSubList(section) {
 
     // Show dropdown div (CSS should already fix it to the right position)
     dropdiv = document.getElementById("drop-"+section);
-    dropdiv.style.visibility = "visible";
+    dropdivwrap = document.getElementById("drop-wrapper-"+section);
+    dropdivwrap.hidden = false;
+    dropdiv.hidden = false;
 }
 
 function hideSubList(section) {
@@ -130,7 +132,9 @@ function hideSubList(section) {
 
     // Hide list
     dropdiv = document.getElementById("drop-"+section);
-    dropdiv.style.visibility = "hidden";
+    dropdivwrap = document.getElementById("drop-wrapper-"+section);
+    dropdivwrap.hidden = true;
+    dropdiv.hidden = true;
 }
 
 // ===== REPEAT LOADING FUNCTIONS ===== //

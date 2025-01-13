@@ -3,12 +3,12 @@
     <li onclick="changeSection('home')">Home</li>
     <li class="ribbon-drop-tab" id="about" onclick="showSubList('about')" onmouseleave="hideSubList('about')">
         About
-        <div class="ribbon-drop-wrapper">
-        <menu class="ribbon-drop" id="drop-about">
-            <li onclick="changeSection('about-professional')">Professional</li>
-            <li onclick="changeSection('about-personal')">Personal</li>
-            <li onclick="changeSection('about-political')">Political</li>
-        </menu>
+        <div hidden class="ribbon-drop-wrapper" id="drop-wrapper-about">
+            <menu hidden class="ribbon-drop" id="drop-about">
+                <li onclick="changeSection('about-professional')">Professional</li>
+                <li onclick="changeSection('about-personal')">Personal</li>
+                <li onclick="changeSection('about-political')">Political</li>
+            </menu>
         </div>
     </li>
     <li onclick="changeSection('works')">Works</li>
