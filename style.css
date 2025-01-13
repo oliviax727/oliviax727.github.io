@@ -43,6 +43,12 @@ button:active {
   background-color: black;
 }
 
+td {
+  width: max-content;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 /* Title Div */
 
 #title {
