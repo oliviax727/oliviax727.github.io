@@ -64,6 +64,11 @@ td {
   width: 100%;
   min-width: 100%;
   vertical-align: middle;
+
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: row;
 }
 
 #name {
@@ -74,6 +79,9 @@ td {
 #sectionname {
   font-weight: bold;
   width: 22%;
+  min-width: 22%;
+  text-align: right;
+  
 }
 
 #navbar {
@@ -84,7 +92,6 @@ td {
   display: inline-block;
   padding: 1%;
   vertical-align: middle;
-  top: initial;
 }
 
 .ribbon a {
