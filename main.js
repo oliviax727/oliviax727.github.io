@@ -118,11 +118,13 @@ function changeSection(section) {
 }
 
 function showSubList(section) {
-    var dropdiv;
+    var dropdiv, dropdivwrap;
 
-    // Show dropdown div (CSS should already fix it to the right position)
+    // Get divs
     dropdiv = document.getElementById("drop-"+section);
     dropdivwrap = document.getElementById("drop-wrapper-"+section);
+
+    // Show dropdown div (CSS should already fix it to the right position)
     dropdivwrap.hidden = false;
     dropdiv.hidden = false;
 }

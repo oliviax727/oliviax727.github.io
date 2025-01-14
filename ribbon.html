@@ -1,19 +1,18 @@
-<span class="ribbon" id="name">Olivia Hilda-Roslyn Walters</span>
-<menu class="ribbon" id="main-ribbon">
-    <li onclick="changeSection('home')">Home</li>
-    <li class="ribbon-drop-tab" id="about" onclick="showSubList('about')" onmouseleave="hideSubList('about')">
-        About
-        <div hidden class="ribbon-drop-wrapper" id="drop-wrapper-about">
-            <menu hidden class="ribbon-drop" id="drop-about">
-                <li onclick="changeSection('about-professional')">Professional</li>
-                <li onclick="changeSection('about-personal')">Personal</li>
-                <li onclick="changeSection('about-political')">Political</li>
-            </menu>
-        </div>
-    </li>
-    <li onclick="changeSection('works')">Works</li>
-    <li onclick="changeSection('curriculum_vitae')">Curriculum Vitae</li>
-    <li onclick="changeSection('links')">Links</li>
-</menu>
+<div class="ribbon" id="name">Olivia Hilda-Roslyn Walters</div>
 
-<span class="ribbon" id="sectionname">Home</span>
+<div class="ribbon" id="navbar">
+    <a onclick="changeSection('home')">Home</a>
+    <div hidden class="dropdown" id="drop-wrapper-about">
+        <div hidden class="dropdown-content" id="drop-about">
+          <a onclick="changeSection('about-professional')">Professional</a>
+          <a onclick="changeSection('about-personal')">Personal</a>
+          <a onclick="changeSection('about-political')">Political</a>
+        </div>
+      </div> 
+    <a class="dropbtn" onclick="showSubList('about')" onmouseleave="hideSubList('about')">About</a>
+    <a onclick="changeSection('works')">Works</a>
+    <a onclick="changeSection('curriculum_vitae')">Curriculum Vitae</a>
+    <a onclick="changeSection('links')">Links</a>
+  </div>
+
+<div class="ribbon" id="sectionname">Home</div>
