@@ -130,11 +130,13 @@ function showSubList(section) {
 }
 
 function hideSubList(section) {
-    var dropdiv;
-
-    // Hide list
+    var dropdiv, dropdivwrap;
+    
+    // Get divs
     dropdiv = document.getElementById("drop-"+section);
     dropdivwrap = document.getElementById("drop-wrapper-"+section);
+
+    // Hide list
     dropdivwrap.hidden = true;
     dropdiv.hidden = true;
 }
