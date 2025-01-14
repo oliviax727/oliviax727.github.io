@@ -1,18 +1,18 @@
 <div class="ribbon" id="name">Olivia Hilda-Roslyn Walters</div>
 
 <div class="ribbon" id="navbar">
-    <a href="?s=home">Home</a>
+    <a onclick="goToSection('home')">Home</a>
     <div hidden class="dropdown" id="drop-wrapper-about">
         <div hidden class="dropdown-content" id="drop-about">
-          <a href="?s=about-professional">Professional</a>
-          <a href="?s=about-personal">Personal</a>
-          <a href="?s=about-political">Political</a>
+          <a onclick="goToSection('about-professional')">Professional</a>
+          <a onclick="goToSection('about-personal')">Personal</a>
+          <a onclick="goToSection('about-political')">Political</a>
         </div>
       </div> 
     <a class="dropbtn" onclick="showSubList('about')" onmouseleave="hideSubList('about')">About</a>
-    <a href="?s=works">Works</a>
-    <a href="?s=curriculum_vitae">Curriculum Vitae</a>
-    <a href="?s=links">Links</a>
+    <a onclick="goToSection('works')">Works</a>
+    <a onclick="goToSection('curriculum_vitae')">Curriculum Vitae</a>
+    <a onclick="goToSection('links')">Links</a>
   </div>
 
 <div class="ribbon" id="sectionname">Home</div>

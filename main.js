@@ -49,7 +49,7 @@ function dig4Bones(makealert=false) {
     }
 }
 
-function createAutoMiner() {
+function createAutoMiner(override = false) {
     // Get bone counter footer element, requires 100 bones
     let bones = document.getElementById("count-bones");
 
@@ -58,9 +58,11 @@ function createAutoMiner() {
     let upgradebutton = document.getElementById("upgrade-auto");
     let level = document.getElementById("count-level");
 
-    if (bones.innerHTML >= 100) {
+    if (bones.innerHTML >= 100 || override) {
         console.log("Creating Miner ...");
-        bones.innerHTML = parseInt(bones.innerHTML) - 100;
+        if (!override) {
+            bones.innerHTML = parseInt(bones.innerHTML) - 100;
+        }
         timer = window.setInterval(dig4Bones, timerinterval);
         createbutton.hidden = true;
         upgradebutton.hidden = false;
@@ -68,16 +70,20 @@ function createAutoMiner() {
     }
 }
 
-function upgradeAutoMiner() {
+function upgradeAutoMiner(noalert = false, override = false) {
     // Get gold counter footer element, requires 1 gold
     let bones = document.getElementById("count-bones");
     let gold = document.getElementById("count-gold");
     let level = document.getElementById("count-level");
 
-    if (gold.innerHTML >= 1 && bones.innerHTML >= 500) {
+    if (level.innerHTML == "Max") {
+        return;
+    }
+
+    if ((gold.innerHTML >= 1 && bones.innerHTML >= 500) || override) {
         if (timerinterval <= 100){
             timerinterval = 1;
-            alert("Miner Fully Upgraded!");
+            if (!noalert) { alert("Miner Fully Upgraded!"); }
             document.getElementById("upgrade-auto").hidden = true;
         } else {
             timerinterval -= 100;
@@ -86,8 +92,10 @@ function upgradeAutoMiner() {
         console.log("Upgrading Miner ...");
 
         level.innerHTML = parseInt(level.innerHTML) + 1;
-        gold.innerHTML = parseInt(gold.innerHTML) - 1;
-        bones.innerHTML = parseInt(bones.innerHTML) - 500;
+        if (!override) {
+            gold.innerHTML = parseInt(gold.innerHTML) - 1;
+            bones.innerHTML = parseInt(bones.innerHTML) - 500;
+        }
         window.clearInterval(timer)
         timer = window.setInterval(dig4Bones, timerinterval);
 
@@ -95,6 +103,29 @@ function upgradeAutoMiner() {
             level.innerHTML = "Max"
         }
     }
+}
+
+function loadBones() {
+    // Load URL Params
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Give plenty of gold and bones for levelleing the autominer
+    const level = parseInt(urlParams.get('l'));
+    const bones = urlParams.get('b');
+    const gold = urlParams.get('g');
+    document.getElementById("count-level").innerHTML = 0;
+
+    // Auto-click level up
+    if (level > 0) {
+        createAutoMiner(override=true);
+        for (i = 1; i < level; i++) {
+            upgradeAutoMiner(noalert=true, override=true);
+        }
+    }
+
+    // Set static span elements
+    document.getElementById("count-bones").innerHTML = (bones == null) ? 0 : bones;
+    document.getElementById("count-gold").innerHTML = (gold == null) ? 0 : gold;
 }
 
 // ===== ACTIVE UPDATING ===== //
@@ -108,13 +139,14 @@ function changeSection(section) {
     contentdiv.innerHTML = "";
     contentdiv.setAttribute("w3-include-html", "html-files/"+section+".html");
 
-    // Change cosmetics in ribbon
-    sectionname = document.getElementById("sectionname");
-    sectionname.innerHTML = formatSection(section);
-    document.getElementById("title").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
-
     // Re-call include HTML
-    includeHTML(() => { console.log("Switched to section: "+section); });
+    includeHTML(() => {
+        // Change cosmetics in ribbon
+        sectionname = document.getElementById("sectionname");
+        sectionname.innerHTML = formatSection(section);
+        document.getElementById("title").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
+        console.log("Switched to section: "+section);
+    });
 }
 
 function showSubList(section) {
@@ -141,19 +173,33 @@ function hideSubList(section) {
     dropdiv.hidden = true;
 }
 
-function initPage(){
+function initPage() {
     const urlParams = new URLSearchParams(window.location.search);
     const page = urlParams.get('s');
-    
+
+    if (page != null) {
+        changeSection(page);
+    } else {
+        loadPage();
+    }
+}
+
+function loadPage(_callback) {
     // Load the page
     includeHTML(() => {
         updateAges();
-        if (document.getElementById("footer") != null){
-            if (page != null) {
-                changeSection(page);
-            }
-        }
     });
+}
+
+// Save bones and change URL - avoids me having to copy the header everywhere
+// Also allows for users to edit bone counts - it's a feature not a bug, ok?
+function goToSection(section) {
+    // Get bones to save
+    let bones = document.getElementById("count-bones").innerHTML;
+    let gold = document.getElementById("count-gold").innerHTML;
+    let level = document.getElementById("count-level").innerHTML;
+
+    window.location.href = "?s="+section+'&b='+bones+"&g="+gold+"&l="+level;
 }
 
 // ===== INTITIALISATION FUNCTIONS ===== //
@@ -268,6 +314,11 @@ function includeHTML(_callback, _fileload=null) {
                     // Recursive call
                     console.log("Loaded "+file);
                     includeHTML(_callback);
+
+                    // Load bones in footer
+                    if (file == 'footer.html') {
+                        loadBones();
+                    }
 
                     // XHTTP doesn't like async/await, so just do it every time the XHTTP is loaded
                     _callback();
