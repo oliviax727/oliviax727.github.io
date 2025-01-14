@@ -99,6 +99,8 @@ td {
   width: max-content;
   padding: 2%;
   font-weight: normal;
+  text-decoration: none;
+  color: white;
 }
 
 .ribbon a:hover {

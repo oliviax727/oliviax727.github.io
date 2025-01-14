@@ -113,8 +113,8 @@ function changeSection(section) {
     sectionname.innerHTML = formatSection(section);
     document.getElementById("title").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
 
-    // Call includeHTML (load page) and exit
-    loadPage();
+    // Re-call include HTML
+    includeHTML(() => { console.log("Switched to section: "+section); });
 }
 
 function showSubList(section) {
@@ -141,23 +141,17 @@ function hideSubList(section) {
     dropdiv.hidden = true;
 }
 
-// ===== REPEAT LOADING FUNCTIONS ===== //
-
-function initPage() {
+function initPage(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const page = urlParams.get('s');
+    
+    // Load the page
     includeHTML(() => {
         updateAges();
         if (document.getElementById("footer") != null){
-            //expandToWindow();
-        }
-        
-    });
-}
-
-function loadPage() {
-    includeHTML(() => {
-        updateAges();
-        if (document.getElementById("footer") != null){
-            //expandToWindow();
+            if (page != null) {
+                changeSection(page);
+            }
         }
     });
 }
