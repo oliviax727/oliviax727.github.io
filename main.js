@@ -47,6 +47,8 @@ function dig4Bones(makealert=false) {
     } else {
         if (makealert) { alert("You got no bones :("); }
     }
+
+    saveBones();
 }
 
 function createAutoMiner(override = false) {
@@ -68,6 +70,8 @@ function createAutoMiner(override = false) {
         upgradebutton.hidden = false;
         level.innerHTML = 1;
     }
+
+    saveBones();
 }
 
 function upgradeAutoMiner(noalert = false, override = false) {
@@ -96,23 +100,27 @@ function upgradeAutoMiner(noalert = false, override = false) {
             gold.innerHTML = parseInt(gold.innerHTML) - 1;
             bones.innerHTML = parseInt(bones.innerHTML) - 500;
         }
-        window.clearInterval(timer)
+        window.clearInterval(timer);
         timer = window.setInterval(dig4Bones, timerinterval);
 
         if (level.innerHTML == 11) {
             level.innerHTML = "Max"
         }
     }
+
+    saveBones();
 }
 
 function loadBones() {
-    // Load URL Params
-    const urlParams = new URLSearchParams(window.location.search);
-
     // Give plenty of gold and bones for levelleing the autominer
-    const level = parseInt(urlParams.get('l'));
-    const bones = urlParams.get('b');
-    const gold = urlParams.get('g');
+    let level = parseInt(getCookie("l"));
+    const bones = parseInt(getCookie("b"));
+    const gold = parseInt(getCookie("g"));
+
+    if (isNaN(level)) {
+        level = 0;
+    }
+
     document.getElementById("count-level").innerHTML = 0;
 
     // Auto-click level up
@@ -124,8 +132,41 @@ function loadBones() {
     }
 
     // Set static span elements
-    document.getElementById("count-bones").innerHTML = (bones == null) ? 0 : bones;
-    document.getElementById("count-gold").innerHTML = (gold == null) ? 0 : gold;
+    document.getElementById("count-bones").innerHTML = isNaN(bones) ? 0 : bones;
+    document.getElementById("count-gold").innerHTML = isNaN(gold) ? 0 : gold;
+}
+
+function resetBones() {
+    console.log("Resetting Game");
+
+    // Clear autominer timer
+    window.clearInterval(timer);
+
+    // Reset Buttons
+    document.getElementById("upgrade-auto").hidden = true;
+    document.getElementById("create-auto").hidden = false;
+
+    // Set all elements to 0
+    document.getElementById("count-bones").innerHTML = 0;
+    document.getElementById("count-gold").innerHTML = 0;
+    document.getElementById("count-level").innerHTML = 0;
+
+    // Reset cookies - doesn't delete them
+    setCookie("l", null);
+    setCookie("g", null);
+    setCookie("b", null);
+}
+
+function saveBones() {
+    // Get bones to save
+    let bones = document.getElementById("count-bones").innerHTML;
+    let gold = document.getElementById("count-gold").innerHTML;
+    let level = document.getElementById("count-level").innerHTML;
+
+    // Set cookies
+    setCookie("b", bones);
+    setCookie("g", gold);
+    setCookie("l", level);
 }
 
 // ===== ACTIVE UPDATING ===== //
@@ -194,12 +235,8 @@ function loadPage(_callback) {
 // Save bones and change URL - avoids me having to copy the header everywhere
 // Also allows for users to edit bone counts - it's a feature not a bug, ok?
 function goToSection(section) {
-    // Get bones to save
-    let bones = document.getElementById("count-bones").innerHTML;
-    let gold = document.getElementById("count-gold").innerHTML;
-    let level = document.getElementById("count-level").innerHTML;
-
-    window.location.href = "?s="+section+'&b='+bones+"&g="+gold+"&l="+level;
+    saveBones();
+    window.location.href = "?s="+section;
 }
 
 // ===== INTITIALISATION FUNCTIONS ===== //
@@ -336,6 +373,16 @@ function includeHTML(_callback, _fileload=null) {
 }
 
 // ===== HANDY FUNCTIONS ===== //
+
+function setCookie(name, value) {
+    document.cookie = name+"="+value+"; path=/index.html";
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    return parts.pop().split(';').shift();
+  }
 
 function capitalize(str) {
     return String(str).charAt(0).toUpperCase() + String(str).slice(1);
