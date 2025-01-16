@@ -182,6 +182,8 @@ function changeSection(section) {
 
     // Re-call include HTML
     includeHTML(() => {
+        updateAges();
+        
         // Change cosmetics in ribbon
         sectionname = document.getElementById("sectionname");
         sectionname.innerHTML = formatSection(section);
