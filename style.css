@@ -223,7 +223,7 @@ td {
   border-top: solid;
   border-top-color: white;
   border-top-width: 1px;
-  z-index: 3;
+  z-index: -1;
 }
 
 .footer {
