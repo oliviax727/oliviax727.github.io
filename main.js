@@ -181,9 +181,7 @@ function changeSection(section) {
     contentdiv.setAttribute("w3-include-html", "html-files/"+section+".html");
 
     // Re-call include HTML
-    includeHTML(() => {
-        updateAges();
-        
+    loadPage(() => {
         // Change cosmetics in ribbon
         sectionname = document.getElementById("sectionname");
         sectionname.innerHTML = formatSection(section);
@@ -227,10 +225,12 @@ function initPage() {
     }
 }
 
-function loadPage(_callback) {
+function loadPage(_callback=(() => {})) {
     // Load the page
     includeHTML(() => {
+        _callback();
         updateAges();
+        crunch();
     });
 }
 
@@ -240,6 +240,41 @@ function goToSection(section) {
     saveBones();
     window.location.href = "?s="+section;
 }
+
+// Alter webpage if window too small
+function crunch() {
+    let centreext = document.getElementById("centreext");
+    let centrediv = document.getElementById("centre");
+    let sidebar = document.getElementById("sidebar");
+
+    // Don't crunch if there's nothing to crunch
+    if (centrediv == null && centreext == null) {
+        return;
+    }
+
+    // 840 ~ Width that causes Ribbon selectors to become multiline
+    if (window.innerWidth < 840) {
+        if (centreext != null) {
+            centreext.style.marginLeft = 0;
+            centreext.style.width = "100%";
+        } else {
+            centrediv.style.marginLeft = 0;
+            centrediv.style.width = "100%";
+            sidebar.style.display = "none";
+        }
+    } else {
+        if (centreext != null) {
+            centreext.style.marginLeft = "11%";
+            centreext.style.width = "78%";
+        } else {
+            centrediv.style.marginLeft = "11%";
+            centrediv.style.width = "67%";
+            sidebar.style.display = "initial";
+        }
+    }
+}
+
+window.onresize = crunch;
 
 // ===== INTITIALISATION FUNCTIONS ===== //
 
@@ -269,11 +304,6 @@ function updateAges() {
 
         span.classList.remove("age");
     }
-}
-
-// Change ribbon to Sidebar if webpage is too small
-function crunchRibbon() {
-
 }
 
 // Alter footer if body is too big

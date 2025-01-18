@@ -74,6 +74,7 @@ td {
 #name {
   font-weight: bold;
   width: 22%;
+  min-width: max-content;
 }
 
 #sectionname {
@@ -141,55 +142,6 @@ td {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
-/*
-.ribbon-drop-tab {
-  position: relative;
-}
-
-.ribbon-drop-wrapper {
-  position: absolute;
-  left: 0;
-  direction: ltr;
-}
-
-
-
-.ribbon-drop {
-  position: fixed;
-}
-
-.ribbon li {
-  display: inline;
-  font-weight: normal;
-  padding: 2%;
-}
-
-.ribbon li:hover {
-  background-color: #666;
-}
-
-.ribbon-drop li {
-  display: block;
-  width: max-content;
-  padding: 5%;
-}
-
-#drop-about {
-  display: block;
-
-  background-color: #444;
-  border: solid;
-  border-color: white;
-  border-width: 1px;
-
-  width: max-content;
-  padding: 1%;
-  justify-content: left;
-  text-align: left;
-  padding-right: 2%;
-}
-*/
 
 #name {
   width: 22%;
