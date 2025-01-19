@@ -245,7 +245,15 @@ function hideSubList(section) {
 
 // Turn on or off the display of the menu
 function toggleMenu(toggleflag) {
+    let menu = document.getElementById("menu");
+
     console.log("Menu toggled");
+
+    if (toggleflag) {
+        menu.hidden = false;
+    } else {
+        menu.hidden = true;
+    }
 }
 
 // Alter webpage if window too small

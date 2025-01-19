@@ -183,6 +183,72 @@ td {
   object-fit: cover;
 }
 
+/* Side Menu Div */
+
+#menu {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  min-width: 100%;
+  z-index: 1;
+  text-align: left;
+}
+
+#sidebar-ribbon {
+  position: fixed;
+  height: 100%;
+  min-width: fit-content;
+  border: solid;
+  border-color: white;
+  background-color: darkmagenta;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  flex-basis: fit-content;
+}
+
+#sectionname-menu-wrapper {
+  font-weight: bold;
+  padding: 10%;
+  width: 100%;
+}
+
+#navbar-menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-basis: fit-content;
+}
+
+#navbar-menu a, span {
+  padding: 10%;
+  width: 100%;
+  float: none;
+}
+
+#navbar-menu a:hover {
+  background-color: #666;
+}
+
+#about-sublist {
+  display: flex;
+  flex-direction: column;
+  flex-basis: fit-content;
+  margin-left: 10%;
+  width: 100%;
+}
+
+#decolourbox {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.8;
+  z-index: 1;
+}
+
 /* Central Text Div */
 
 .flexdiv {
