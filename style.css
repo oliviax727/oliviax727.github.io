@@ -94,6 +94,7 @@ td {
 
 #menu {
   vertical-align: middle;
+  width: fit-content;
 }
 
 .ribbon-crunch {
