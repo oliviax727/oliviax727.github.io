@@ -248,17 +248,13 @@ function toggleMenu(toggleflag) {
     console.log("Menu toggled");
 }
 
-// Turn on or off the display of the sidebar
-function toggleExtras(toggleflag) {
-    console.log("Extras toggled");
-}
-
 // Alter webpage if window too small
 function crunch() {
     // Content altering
     let centreext = document.getElementById("centreext");
     let centrediv = document.getElementById("centre");
     let sidebar = document.getElementById("sidebar");
+    let contentwrapper = document.getElementById("content");
 
     // Ribbon stuff
     let ribbonmain = document.getElementsByClassName("ribbon-main");
@@ -279,7 +275,11 @@ function crunch() {
         } else {
             centrediv.style.marginLeft = 0;
             centrediv.style.width = "100%";
-            sidebar.style.display = "none";
+            contentwrapper.style.display = "grid";
+            sidebar.style.width = "100%";
+            sidebar.style.paddingLeft = "33%";
+            sidebar.style.paddingRight = "33%";
+            sidebar.style.borderLeft = "none";
         }
 
         // Change Ribbon
@@ -299,7 +299,12 @@ function crunch() {
         } else {
             centrediv.style.marginLeft = "11%";
             centrediv.style.width = "67%";
-            sidebar.style.display = "initial";
+            sidebar.style.display = "relative";
+            contentwrapper.style.display = "flex";
+            sidebar.style.width = "11%";
+            sidebar.style.paddingLeft = "1%";
+            sidebar.style.paddingRight = "1%";
+            sidebar.style.borderLeft = "solid";
         }
 
         // Change Ribbon

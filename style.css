@@ -182,7 +182,7 @@ td {
   min-height: 100%;
   flex-direction: row;
   align-items: stretch;
-  z-index: 2;
+  z-index: -2;
 }
 
 .flexdiv img {
@@ -199,11 +199,13 @@ td {
 
 .centerdiv {
   background-color: #444;
+  position: relative;
   display: block;
   display:inline-block;
   padding: 1%;
   box-sizing: border-box;
-  height: auto
+  height: auto;
+  z-index: -2;
 }
 
 #centre {
