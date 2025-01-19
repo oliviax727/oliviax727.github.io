@@ -14,7 +14,7 @@ const SECTION_COLOR_DICT = new Map([
     ["about-personal", ["darkgreen", "green"]],
     ["about-political", ["darkred", "red"]],
     ["works", ["darkgoldenrod", "goldenrod"]],
-    ["curriculum_vitae", ["darkorange", "orange"]],
+    ["curriculum_vitae", ["chocolate", "darkorange"]],
     ["links", ["darkblue", "blue"]]
 ]);
 
