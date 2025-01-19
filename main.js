@@ -173,7 +173,7 @@ function saveBones() {
 
 // Change/update section
 function changeSection(section) {
-    var contentdiv, sectionname;
+    var contentdiv;
 
     // Get contentdiv, remove internal components, and then add includeHTML attribute
     contentdiv = document.getElementById("content");
@@ -183,9 +183,10 @@ function changeSection(section) {
     // Re-call include HTML
     loadPage(() => {
         // Change cosmetics in ribbon
-        sectionname = document.getElementById("sectionname");
-        sectionname.innerHTML = formatSection(section);
+        document.getElementById("sectionname").innerHTML = formatSection(section);
+        document.getElementById("sectionname-menu").innerHTML = formatSection(section);
         document.getElementById("title").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
+        document.getElementById("sidebar-ribbon").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
         console.log("Switched to section: "+section);
     });
 }
@@ -246,6 +247,7 @@ function hideSubList(section) {
 // Turn on or off the display of the menu
 function toggleMenu(toggleflag) {
     let menu = document.getElementById("menu");
+    let title = document.getElementById("title");
 
     console.log("Menu toggled");
 

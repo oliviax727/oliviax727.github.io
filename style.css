@@ -225,6 +225,7 @@ td {
 
 #navbar-menu a, #navbar-menu span {
   padding: 10%;
+  margin-left: 5%;
   width: 120%;
   float: none;
 }
