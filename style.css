@@ -85,15 +85,26 @@ td {
   width: 22%;
   min-width: 22%;
   text-align: right;
-  
 }
 
 #navbar {
   width: 55%;
 }
 
-.ribbon {
+#extras {
+  text-align: right;
+}
+
+.ribbon-crunch {
+  display: none;
+  width: 50%;
+}
+
+.ribbon-main {
   display: inline-block;
+}
+
+.ribbon {
   padding: 1%;
   vertical-align: middle;
 }

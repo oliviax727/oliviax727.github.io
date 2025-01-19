@@ -190,30 +190,6 @@ function changeSection(section) {
     });
 }
 
-function showSubList(section) {
-    var dropdiv, dropdivwrap;
-
-    // Get divs
-    dropdiv = document.getElementById("drop-"+section);
-    dropdivwrap = document.getElementById("drop-wrapper-"+section);
-
-    // Show dropdown div (CSS should already fix it to the right position)
-    dropdivwrap.hidden = false;
-    dropdiv.hidden = false;
-}
-
-function hideSubList(section) {
-    var dropdiv, dropdivwrap;
-    
-    // Get divs
-    dropdiv = document.getElementById("drop-"+section);
-    dropdivwrap = document.getElementById("drop-wrapper-"+section);
-
-    // Hide list
-    dropdivwrap.hidden = true;
-    dropdiv.hidden = true;
-}
-
 function initPage() {
     const urlParams = new URLSearchParams(window.location.search);
     const page = urlParams.get('s');
@@ -241,11 +217,52 @@ function goToSection(section) {
     window.location.href = "?s="+section;
 }
 
+// ===== TOGGLE FUNCTIONS ===== //
+
+function showSubList(section) {
+    var dropdiv, dropdivwrap;
+
+    // Get divs
+    dropdiv = document.getElementById("drop-"+section);
+    dropdivwrap = document.getElementById("drop-wrapper-"+section);
+
+    // Show dropdown div (CSS should already fix it to the right position)
+    dropdivwrap.hidden = false;
+    dropdiv.hidden = false;
+}
+
+function hideSubList(section) {
+    var dropdiv, dropdivwrap;
+    
+    // Get divs
+    dropdiv = document.getElementById("drop-"+section);
+    dropdivwrap = document.getElementById("drop-wrapper-"+section);
+
+    // Hide list
+    dropdivwrap.hidden = true;
+    dropdiv.hidden = true;
+}
+
+// Turn on or off the display of the menu
+function toggleMenu(toggleflag) {
+    console.log("Menu toggled");
+}
+
+// Turn on or off the display of the sidebar
+function toggleExtras(toggleflag) {
+    console.log("Extras toggled");
+}
+
 // Alter webpage if window too small
 function crunch() {
+    // Content altering
     let centreext = document.getElementById("centreext");
     let centrediv = document.getElementById("centre");
     let sidebar = document.getElementById("sidebar");
+
+    // Ribbon stuff
+    let ribbonmain = document.getElementsByClassName("ribbon-main");
+    let ribboncrunch = document.getElementsByClassName("ribbon-crunch");
 
     // Don't crunch if there's nothing to crunch
     if (centrediv == null && centreext == null) {
@@ -254,6 +271,8 @@ function crunch() {
 
     // 840 ~ Width that causes Ribbon selectors to become multiline
     if (window.innerWidth < 840) {
+
+        // Resize main content
         if (centreext != null) {
             centreext.style.marginLeft = 0;
             centreext.style.width = "100%";
@@ -262,7 +281,18 @@ function crunch() {
             centrediv.style.width = "100%";
             sidebar.style.display = "none";
         }
+
+        // Change Ribbon
+        for (let i = 0; i < ribbonmain.length; i++) {
+            ribbonmain[i].style.display = "none";
+        }
+        for (let i = 0; i < ribboncrunch.length; i++) {
+            ribboncrunch[i].style.display = "inline-block";
+        }
+
     } else {
+
+        // Resize main content
         if (centreext != null) {
             centreext.style.marginLeft = "11%";
             centreext.style.width = "78%";
@@ -270,6 +300,14 @@ function crunch() {
             centrediv.style.marginLeft = "11%";
             centrediv.style.width = "67%";
             sidebar.style.display = "initial";
+        }
+
+        // Change Ribbon
+        for (let i = 0; i < ribbonmain.length; i++) {
+            ribbonmain[i].style.display = "inline-block";
+        }
+        for (let i = 0; i < ribboncrunch.length; i++) {
+            ribboncrunch[i].style.display = "none";
         }
     }
 }

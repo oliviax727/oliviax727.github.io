@@ -1,6 +1,10 @@
-<div class="ribbon" id="name">Olivia Hilda-Roslyn Walters</div>
+<div class="ribbon ribbon-main" id="name">Olivia Hilda-Roslyn Walters</div>
 
-<div class="ribbon" id="navbar">
+<div class="ribbon ribbon-crunch" id="menu">
+  <a onclick="toggleMenu(true)" onmouseleave="toggleMenu(false)">Menu</a>
+</div>
+
+<div class="ribbon ribbon-main" id="navbar">
     <a onclick="goToSection('home')">Home</a>
     <div hidden class="dropdown" id="drop-wrapper-about">
         <div hidden class="dropdown-content" id="drop-about">
@@ -15,4 +19,8 @@
     <a onclick="goToSection('links')">Links</a>
   </div>
 
-<div class="ribbon" id="sectionname">Home</div>
+<div class="ribbon ribbon-main" id="sectionname">Home</div>
+
+<div class="ribbon ribbon-crunch" id="extras">
+  <a onclick="toggleExtras(true)" onmouseleave="toggleExtras(false)">Extras</a>
+</div>
