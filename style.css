@@ -10,6 +10,7 @@
 body {
   background-color: black;
   font-family: "Open Sans", Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
   color: white;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -91,8 +92,8 @@ td {
   width: 55%;
 }
 
-#extras {
-  text-align: right;
+#menu {
+  vertical-align: middle;
 }
 
 .ribbon-crunch {
@@ -172,6 +173,13 @@ td {
   justify-content: right;
   text-align: right;
   padding: 1%;
+}
+
+.ribbon img {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  object-fit: cover;
 }
 
 /* Central Text Div */

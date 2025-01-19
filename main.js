@@ -308,11 +308,11 @@ function crunch() {
         }
 
         // Change Ribbon
-        for (let i = 0; i < ribbonmain.length; i++) {
-            ribbonmain[i].style.display = "inline-block";
-        }
         for (let i = 0; i < ribboncrunch.length; i++) {
             ribboncrunch[i].style.display = "none";
+        }
+        for (let i = 0; i < ribbonmain.length; i++) {
+            ribbonmain[i].style.display = "inline-block";
         }
     }
 }
