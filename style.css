@@ -72,7 +72,7 @@ td {
   align-items: center;
   flex-direction: row;
 
-  z-index: 0;
+  z-index: 3;
 }
 
 #name {
@@ -92,7 +92,7 @@ td {
   width: 55%;
 }
 
-#menu {
+#menu-button {
   vertical-align: middle;
   width: fit-content;
 }
@@ -140,7 +140,7 @@ td {
   width: fit-content;
   padding: 1%;
   padding-right: 2%;
-  z-index: 1;
+  z-index: 4;
 }
 
 .dropdown-content a {
@@ -192,7 +192,7 @@ td {
   min-height: 100%;
   width: 100%;
   min-width: 100%;
-  z-index: 1;
+  z-index: 4;
   text-align: left;
 }
 
@@ -203,16 +203,17 @@ td {
   border: solid;
   border-color: white;
   background-color: darkmagenta;
-  z-index: 2;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   flex-basis: fit-content;
+  padding-right: 10%;
 }
 
 #sectionname-menu-wrapper {
   font-weight: bold;
   padding: 10%;
-  width: 100%;
+  width: 120%;
 }
 
 #navbar-menu {
@@ -222,9 +223,9 @@ td {
   flex-basis: fit-content;
 }
 
-#navbar-menu a, span {
+#navbar-menu a, #navbar-menu span {
   padding: 10%;
-  width: 100%;
+  width: 120%;
   float: none;
 }
 
@@ -236,7 +237,7 @@ td {
   display: flex;
   flex-direction: column;
   flex-basis: fit-content;
-  margin-left: 10%;
+  padding-left: 10%;
   width: 100%;
 }
 
@@ -246,7 +247,7 @@ td {
   width: 100%;
   background-color: black;
   opacity: 0.8;
-  z-index: 1;
+  z-index: 4;
 }
 
 /* Central Text Div */
@@ -257,7 +258,7 @@ td {
   min-height: 100%;
   flex-direction: row;
   align-items: stretch;
-  z-index: -2;
+  z-index: 1;
 }
 
 .flexdiv img {
@@ -280,7 +281,7 @@ td {
   padding: 1%;
   box-sizing: border-box;
   height: auto;
-  z-index: -2;
+  z-index: 1;
 }
 
 #centre {
@@ -312,7 +313,7 @@ td {
   border-top: solid;
   border-top-color: white;
   border-top-width: 1px;
-  z-index: -1;
+  z-index: 1;
 }
 
 .footer {
