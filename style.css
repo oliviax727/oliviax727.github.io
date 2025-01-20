@@ -212,18 +212,21 @@ td, th {
   z-index: 5;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 #sectionname-menu-wrapper {
   font-weight: bold;
   padding: 10%;
   width: 180px;
+  box-sizing: border-box;
 }
 
 #navbar-menu {
   display: flex;
   flex-direction: column;
   width: 180px;
+  box-sizing: border-box;
 }
 
 #navbar-menu a, #navbar-menu span {
@@ -231,6 +234,7 @@ td, th {
   padding-top: 5%;
   padding-bottom: 5%;
   width: 180px;
+  box-sizing: border-box;
 }
 
 #navbar-menu a:hover {
@@ -242,10 +246,12 @@ td, th {
   flex-direction: column;
   padding-left: 10%;
   width: 180px;
+  box-sizing: border-box;
 }
 
 #about-sublist a {
   width: 162px;
+  box-sizing: border-box;
 }
 
 #decolourbox {
