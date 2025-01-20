@@ -45,10 +45,16 @@ button:active {
   background-color: black;
 }
 
-td {
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td, th {
   width: max-content;
   padding-left: 10px;
   padding-right: 10px;
+  text-align: left;
 }
 
 /* Title Div */
