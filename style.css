@@ -217,21 +217,20 @@ td, th {
 #sectionname-menu-wrapper {
   font-weight: bold;
   padding: 10%;
-  width: 100%;
+  width: 180px;
 }
 
 #navbar-menu {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  flex-basis: fit-content;
+  width: 180px;
 }
 
 #navbar-menu a, #navbar-menu span {
   padding: 10%;
   padding-top: 5%;
   padding-bottom: 5%;
-  width: 100%;
+  width: 180px;
   float: none;
 }
 
@@ -244,6 +243,10 @@ td, th {
   flex-direction: column;
   flex-basis: fit-content;
   padding-left: 10%;
+  width: 180px;
+}
+
+#about-sublist a {
   width: 100%;
 }
 
