@@ -233,7 +233,7 @@ td, th {
   padding: 10%;
   padding-top: 5%;
   padding-bottom: 5%;
-  width: 180px;
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -245,12 +245,12 @@ td, th {
   display: flex;
   flex-direction: column;
   padding-left: 10%;
-  width: 180px;
+  width: 100%;
   box-sizing: border-box;
 }
 
 #about-sublist a {
-  width: 162px;
+  width: 90%;
   box-sizing: border-box;
 }
 
