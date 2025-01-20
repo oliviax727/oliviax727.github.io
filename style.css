@@ -231,7 +231,6 @@ td, th {
   padding-top: 5%;
   padding-bottom: 5%;
   width: 180px;
-  float: none;
 }
 
 #navbar-menu a:hover {
@@ -241,13 +240,12 @@ td, th {
 #about-sublist {
   display: flex;
   flex-direction: column;
-  flex-basis: fit-content;
   padding-left: 10%;
   width: 180px;
 }
 
 #about-sublist a {
-  width: 100%;
+  width: 162px;
 }
 
 #decolourbox {
