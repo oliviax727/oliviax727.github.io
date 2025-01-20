@@ -233,7 +233,7 @@ td, th {
   padding: 10%;
   padding-top: 5%;
   padding-bottom: 5%;
-  width: 100%;
+  width: 95%;
   box-sizing: border-box;
 }
 
@@ -250,7 +250,7 @@ td, th {
 }
 
 #about-sublist a {
-  width: 90%;
+  width: 95%;
   box-sizing: border-box;
 }
 
