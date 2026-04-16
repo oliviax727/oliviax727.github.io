@@ -467,7 +467,7 @@ function includeHTML(_callback, _fileload=null) {
 // ===== HANDY FUNCTIONS ===== //
 
 function setCookie(name, value) {
-    document.cookie = name+"="+value+"; path=/index.html";
+    document.cookie = name+"="+value+"; path=/";
 }
 
 function getCookie(name) {
