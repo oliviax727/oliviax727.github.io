@@ -167,6 +167,8 @@ function saveBones() {
     setCookie("b", bones);
     setCookie("g", gold);
     setCookie("l", level);
+
+    console.log("Saved bones: b="+bones+", g="+", l="+level)
 }
 
 // ===== ACTIVE UPDATING ===== //
@@ -188,6 +190,8 @@ function changeSection(section) {
             document.getElementById("sectionname-menu").innerHTML = formatSection(section);
             document.getElementById("title").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
             document.getElementById("sidebar-ribbon").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
+        } catch (error) { 
+            console.log("Did not switch to section: "+section+"; "+error);
         } finally {
             console.log("Switched to section: "+section);
         }
