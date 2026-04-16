@@ -208,6 +208,7 @@ function loadPage(_callback=(() => {})) {
         _callback();
         updateAges();
         crunch();
+        listCookies();
     });
 }
 
@@ -342,14 +343,13 @@ function updateAges() {
 
         // Get age attribute of span and add 1 day
         let agedate = new Date(span.getAttribute("date"));
-        //agedate.setDate(agedate.getDate() + 1);
+        agedate.setHours(0,0,0,0);
 
         // Take year difference and set it inside the HTML
         let agediff = new Date(CURRENT_DATE - agedate).getFullYear() - 1970;
 
         // Show date if tag is flagged
         if (span.hasAttribute("showdate")){
-            agedate.setDate(agedate.getDate() - 1);
             span.innerHTML = agediff + " (" + agedate.toLocaleDateString('en-CA') + ")";
         } else {
             span.innerHTML = agediff
@@ -467,7 +467,16 @@ function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     return parts.pop().split(';').shift();
-  }
+}
+
+function listCookies() {
+    var theCookies = document.cookie.split(';');
+    var cookieString = '';
+    for (var i = 1 ; i <= theCookies.length; i++) {
+        cookieString += i + ' ' + theCookies[i-1] + "\n";
+    }
+    console.log(cookieString);
+}
 
 function capitalize(str) {
     return String(str).charAt(0).toUpperCase() + String(str).slice(1);
