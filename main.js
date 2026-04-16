@@ -183,11 +183,14 @@ function changeSection(section) {
     // Re-call include HTML
     loadPage(() => {
         // Change cosmetics in ribbon
-        document.getElementById("sectionname").innerHTML = formatSection(section);
-        document.getElementById("sectionname-menu").innerHTML = formatSection(section);
-        document.getElementById("title").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
-        document.getElementById("sidebar-ribbon").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
-        console.log("Switched to section: "+section);
+        try {
+            document.getElementById("sectionname").innerHTML = formatSection(section);
+            document.getElementById("sectionname-menu").innerHTML = formatSection(section);
+            document.getElementById("title").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
+            document.getElementById("sidebar-ribbon").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
+        } finally {
+            console.log("Switched to section: "+section);
+        }
     });
 }
 
@@ -208,7 +211,7 @@ function loadPage(_callback=(() => {})) {
         _callback();
         updateAges();
         crunch();
-        listCookies();
+        console.log(document.cookie);
     });
 }
 
@@ -467,15 +470,6 @@ function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     return parts.pop().split(';').shift();
-}
-
-function listCookies() {
-    var theCookies = document.cookie.split(';');
-    var cookieString = '';
-    for (var i = 1 ; i <= theCookies.length; i++) {
-        cookieString += i + ' ' + theCookies[i-1] + "\n";
-    }
-    console.log(cookieString);
 }
 
 function capitalize(str) {
