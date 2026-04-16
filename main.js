@@ -342,7 +342,7 @@ function updateAges() {
 
         // Get age attribute of span and add 1 day
         let agedate = new Date(span.getAttribute("date"));
-        agedate.setDate(agedate.getDate() + 1);
+        //agedate.setDate(agedate.getDate() + 1);
 
         // Take year difference and set it inside the HTML
         let agediff = new Date(CURRENT_DATE - agedate).getFullYear() - 1970;
