@@ -4,9 +4,6 @@
 // End-user check JS works
 console.info("This message should appear if the javascript integration has worked.")
 
-// For testing purposes (VSCode doesn't like console with HTML preview)
-var teststring;
-
 // Constants
 const SECTION_COLOR_DICT = new Map([
     ["home", ["darkmagenta", "magenta"]],
@@ -180,7 +177,7 @@ function changeSection(section) {
     // Get contentdiv, remove internal components, and then add includeHTML attribute
     contentdiv = document.getElementById("content");
     contentdiv.innerHTML = "";
-    contentdiv.setAttribute("w3-include-html", "html-files/"+section+".html");
+    contentdiv.setAttribute("w3-include-html", "src/html/"+section+".html");
 
     // Re-call include HTML
     loadPage(() => {
