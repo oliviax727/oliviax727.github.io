@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <!-- Suggested for phone compatability -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@3.0.1/modern-normalize.min.css">
 
     <!-- Title and icons -->
-    <link href="src/img/boomcon.jpg" sizes="16x16" rel="icon"/>
+    <link href="src/img/boomcon.jpg" sizes="16x16" rel="icon" />
     <title>OHRW/OHRF</title>
 
     <!-- Styling -->
@@ -16,21 +17,22 @@
     <!-- Scripts, native and API -->
     <script src="main.js"></script>
 </head>
+
 <body>
     <!-- Sidebar div (only on crunch) -->
-    <div hidden id="menu-wrapper" style="@import 'src/css/menu.css';" w3-include-html="src/layout/menu.html"></div>
+    <div hidden id="menu-wrapper" w3-include-html="src/layout/menu.html"></div>
 
     <!-- Title/Ribbon div -->
-    <div id="ribbon-wrapper" style="@import 'src/css/ribbon.css';" w3-include-html="src/layout/ribbon.html"></div>
+    <div id="ribbon-wrapper" w3-include-html="src/layout/ribbon.html"></div>
     <br>
 
     <!-- Main content div -->
-    <div class="flexdiv" id="content-wrapper" style="@import 'src/css/content.css';" w3-include-html="src/html/home.html">
+    <div class="flexdiv" id="content-wrapper" w3-include-html="src/html/home.html">
     </div>
     <br>
 
     <!-- Footer div -->
-    <div id="footer-wrapper" class="footer-wrapper" style="@import 'src/css/footer.css';" w3-include-html="src/layout/footer.html">
+    <div id="footer-wrapper" class="footer-wrapper" w3-include-html="src/layout/footer.html">
     </div>
 
 </body>
