@@ -175,7 +175,7 @@ function changeSection(section) {
     var contentdiv;
 
     // Get contentdiv, remove internal components, and then add includeHTML attribute
-    contentdiv = document.getElementById("content");
+    contentdiv = document.getElementById("content-wrapper");
     contentdiv.innerHTML = "";
     contentdiv.setAttribute("w3-include-html", "src/html/"+section+".html");
 
@@ -185,7 +185,7 @@ function changeSection(section) {
         try {
             document.getElementById("sectionname").innerHTML = formatSection(section);
             document.getElementById("sectionname-menu").innerHTML = formatSection(section);
-            document.getElementById("title").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
+            document.getElementById("ribbon-wrapper").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
             document.getElementById("sidebar-ribbon").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
         } catch (error) { 
             console.log("Did not switch to section: "+section+"; "+error);
@@ -251,8 +251,8 @@ function hideSubList(section) {
 
 // Turn on or off the display of the menu
 function toggleMenu(toggleflag) {
-    let menu = document.getElementById("menu");
-    let title = document.getElementById("title");
+    let menu = document.getElementById("menu-wrapper");
+    let title = document.getElementById("ribbon-wrapper");
 
     console.log("Menu toggled");
 
@@ -269,7 +269,7 @@ function crunch() {
     let centreext = document.getElementById("centreext");
     let centrediv = document.getElementById("centre");
     let sidebar = document.getElementById("sidebar");
-    let contentwrapper = document.getElementById("content");
+    let contentwrapper = document.getElementById("content-wrapper");
 
     // Ribbon stuff
     let ribbonmain = document.getElementsByClassName("ribbon-main");
@@ -442,7 +442,7 @@ function includeHTML(_callback, _fileload=null) {
                     includeHTML(_callback);
 
                     // Load bones in footer
-                    if (file == 'footer.html') {
+                    if (file == 'src/layout/footer.html') {
                         loadBones();
                     }
 

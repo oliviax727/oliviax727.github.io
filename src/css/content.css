@@ -1,0 +1,31 @@
+/* Central Text Div */
+
+.centerdiv {
+  background-color: #444;
+  position: relative;
+  display: block;
+  display:inline-block;
+  padding: 1%;
+  box-sizing: border-box;
+  height: auto;
+  z-index: 1;
+}
+
+#centre {
+  padding: 2%;
+  width: 67%;
+  margin-left: 11%;
+}
+
+#centreext {
+  padding: 2%;
+  width: 78%;
+  margin-left: 11%;
+}
+
+#sidebar {
+  width: 11%;
+  border-left: solid;
+  border-left-color: white;
+  border-left-width: 1px;
+}
