@@ -25,7 +25,7 @@ const CRUNCH_SIZE = 840;
 // ===== BONES ===== //
 
 // Funny-Haha Bone Counter. Bones reset on page load
-function dig4Bones(makealert=false) {
+function dig4Bones(makealert = false) {
     var bones, gold, find
 
     if (!makealert) { console.log("Digging ...") }
@@ -40,8 +40,8 @@ function dig4Bones(makealert=false) {
         if (makealert) { alert("You've struck gold!"); }
         gold.innerHTML = parseInt(gold.innerHTML) + 1;
     } else if (find <= 0.5) {
-        let foundbones = Math.floor(1/find - 1);
-        if (makealert) { alert("You found "+foundbones+" bone(s)!"); }
+        let foundbones = Math.floor(1 / find - 1);
+        if (makealert) { alert("You found " + foundbones + " bone(s)!"); }
         bones.innerHTML = parseInt(bones.innerHTML) + foundbones;
     } else {
         if (makealert) { alert("You got no bones :("); }
@@ -84,7 +84,7 @@ function upgradeAutoMiner(noalert = false, override = false) {
     }
 
     if ((gold.innerHTML >= 1 && bones.innerHTML >= 500) || override) {
-        if (timerinterval <= 100){
+        if (timerinterval <= 100) {
             timerinterval = 1;
             if (!noalert) { alert("Miner Fully Upgraded!"); }
             document.getElementById("upgrade-auto").hidden = true;
@@ -124,9 +124,9 @@ function loadBones() {
 
     // Auto-click level up
     if (level > 0) {
-        createAutoMiner(override=true);
+        createAutoMiner(override = true);
         for (i = 1; i < level; i++) {
-            upgradeAutoMiner(noalert=true, override=true);
+            upgradeAutoMiner(noalert = true, override = true);
         }
     }
 
@@ -167,7 +167,7 @@ function saveBones() {
     setCookie("g", gold);
     setCookie("l", level);
 
-    console.log("Saved bones: b="+bones+", g="+", l="+level)
+    console.log("Saved bones: b=" + bones + ", g=" + ", l=" + level)
 }
 
 // ===== ACTIVE UPDATING ===== //
@@ -179,28 +179,16 @@ function changeSection(section) {
     // Get contentdiv, remove internal components, and then add includeHTML attribute
     contentdiv = document.getElementById("content-wrapper");
     contentdiv.innerHTML = "";
-    contentdiv.setAttribute("w3-include-html", "src/html/"+section+".html");
+    contentdiv.setAttribute("w3-include-html", "src/html/" + section + ".html");
 
     // Re-call include HTML
     loadPage(() => {
-        // Change cosmetics in ribbon
         try {
-            document.getElementById("sectionname").innerHTML = formatSection(section);
-            document.getElementById("sectionname-menu").innerHTML = formatSection(section);
-
-            primary = document.getElementsByClassName("primary-color-css");
-            for (var i = 0; i < primary.length; i++) {
-                primary[i].style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
-            }
-
-            secondary = document.getElementsByClassName("secondary-color-css");
-            for (var i = 0; i < secondary.length; i++) {
-                secondary[i].style.backgroundColor = SECTION_COLOR_DICT.get(section)[1];
-            }
-        } catch (error) { 
-            console.log("Did not switch to section: "+section+"; "+error);
+            updatePage(section);
+        } catch (error) {
+            console.log("Did not switch to section: " + section + "; " + error);
         } finally {
-            console.log("Switched to section: "+section);
+            console.log("Switched to section: " + section);
         }
     });
 }
@@ -216,12 +204,10 @@ function initPage() {
     }
 }
 
-function loadPage(_callback=(() => {})) {
+function loadPage(_callback = (() => { })) {
     // Load the page
     includeHTML(() => {
         _callback();
-        updateAges();
-        updateCurrentDates();
         crunch();
         console.log(document.cookie);
     });
@@ -231,7 +217,7 @@ function loadPage(_callback=(() => {})) {
 // Also allows for users to edit bone counts - it's a feature not a bug, ok?
 function goToSection(section) {
     saveBones();
-    window.location.href = "?s="+section;
+    window.location.href = "?s=" + section;
 }
 
 // ===== TOGGLE FUNCTIONS ===== //
@@ -240,8 +226,8 @@ function showSubList(section) {
     var dropdiv, dropdivwrap;
 
     // Get divs
-    dropdiv = document.getElementById("drop-"+section);
-    dropdivwrap = document.getElementById("drop-wrapper-"+section);
+    dropdiv = document.getElementById("drop-" + section);
+    dropdivwrap = document.getElementById("drop-wrapper-" + section);
 
     // Show dropdown div (CSS should already fix it to the right position)
     dropdivwrap.hidden = false;
@@ -250,10 +236,10 @@ function showSubList(section) {
 
 function hideSubList(section) {
     var dropdiv, dropdivwrap;
-    
+
     // Get divs
-    dropdiv = document.getElementById("drop-"+section);
-    dropdivwrap = document.getElementById("drop-wrapper-"+section);
+    dropdiv = document.getElementById("drop-" + section);
+    dropdivwrap = document.getElementById("drop-wrapper-" + section);
 
     // Hide list
     dropdivwrap.hidden = true;
@@ -345,7 +331,39 @@ function crunch() {
 
 window.onresize = crunch;
 
-// ===== INTITIALISATION FUNCTIONS ===== //
+// ===== POST-LOAD UPDATE FUNCTIONS ===== //
+
+// Update webpage CSS and span elements
+function updatePage(section) {
+    updateSectionNames(section);
+    updateBackgroundColors(section);
+    updateAges();
+    updateCurrentDates();
+}
+
+// Update section names
+function updateSectionNames(section) {
+    if (document.querySelector("#sectionname")) {
+        document.getElementById("sectionname").innerHTML = formatSection(section);
+    }
+    
+    if (document.querySelector("#sectionname-menu")) {
+        document.getElementById("sectionname-menu").innerHTML = formatSection(section);
+    }
+}
+
+// Update ribbon/menu background colors
+function updateBackgroundColors(section) {
+    primary = document.getElementsByClassName("primary-color-css");
+    for (var i = 0; i < primary.length; i++) {
+        primary[i].style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
+    }
+
+    secondary = document.getElementsByClassName("secondary-color-css");
+    for (var i = 0; i < secondary.length; i++) {
+        secondary[i].style.backgroundColor = SECTION_COLOR_DICT.get(section)[1];
+    }
+}
 
 // Change all age values in spans
 function updateAges() {
@@ -358,14 +376,14 @@ function updateAges() {
 
         // Get age attribute of span and add 1 day
         let agedate = new Date(span.getAttribute("date"));
-        agedate.setHours(0,0,0,0);
+        agedate.setHours(0, 0, 0, 0);
 
         // Take year difference and set it inside the HTML
         let agediff = new Date(CURRENT_DATE - agedate).getFullYear() - 1970;
 
         // Show date if tag is flagged
-        if (span.hasAttribute("showdate")){
-            span.innerHTML = agediff + " (" + agedate.toLocaleDateString('en-CA') + ")";
+        if (span.hasAttribute("showdate")) {
+            span.innerHTML = agediff + " (" + agedate.toLocaleDateString('en-AU') + ")";
         } else {
             span.innerHTML = agediff
         }
@@ -377,23 +395,12 @@ function updateAges() {
 function updateCurrentDates() {
     var date;
 
-    datespans = document.getElementsByClassName("date");
+    datespans = document.getElementsByClassName("current-date");
 
     for (let i = 0; i < datespans.length; i++) {
         span = datespans[i];
 
-        // Get age attribute of span and add 1 day
-        let timediff = span.getAttribute("time");
-
-        // Take day difference and set it inside the HTML
-        let newdate = new Date().setDate(CURRENT_DATE - timediff);
-
-        // Show date if tag is flagged
-        if (span.hasAttribute("showtime")){
-            span.innerHTML = newdate.toLocaleDateString('en-CA') + " (" + newdate.toLocaleTimeString('en-CA') + ")";
-        } else {
-            span.innerHTML = newdate.toLocaleDateString('en-CA')
-        }
+        span.innerHTML = CURRENT_DATE.toDateString('en-AU');
 
         span.classList.remove("date");
     }
@@ -429,8 +436,8 @@ function read(_callback, file) {
     const xhttp = new XMLHttpRequest();
 
     // On data retreival
-    xhttp.onload = function() {
-        console.log("Loaded "+file)
+    xhttp.onload = function () {
+        console.log("Loaded " + file)
         _callback();
     }
 
@@ -441,7 +448,7 @@ function read(_callback, file) {
 }
 
 // XHTML integration to allow all of the pages to be inserted into eachother (W3 Schools)
-function includeHTML(_callback, _fileload=null) {
+function includeHTML(_callback, _fileload = null) {
     var z, i, elmnt, file, xhttp;
 
     // Loop through a collection of all HTML elements:
@@ -458,23 +465,23 @@ function includeHTML(_callback, _fileload=null) {
             xhttp = new XMLHttpRequest();
 
             // Wait for state change
-            xhttp.onreadystatechange = function() {
+            xhttp.onreadystatechange = function () {
                 if (this.readyState == 4) {
 
                     // Catch errors
-                    if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-                    else if (this.status == 404) {elmnt.innerHTML = "404 Page not found.";}
+                    if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                    else if (this.status == 404) { elmnt.innerHTML = "404 Page not found."; }
                     else {
                         elmnt.innerHTML =
                             "There was some unidentified issue stopping the webpage from loading." +
-                            "\nError Status: "+this.status;
+                            "\nError Status: " + this.status;
                     }
 
                     // Remove the attribute, and call this function once more:
                     elmnt.removeAttribute("w3-include-html");
 
                     // Recursive call
-                    console.log("Loaded "+file);
+                    console.log("Loaded " + file);
                     includeHTML(_callback);
 
                     // Load bones in footer
@@ -500,7 +507,7 @@ function includeHTML(_callback, _fileload=null) {
 // ===== HANDY FUNCTIONS ===== //
 
 function setCookie(name, value) {
-    document.cookie = name+"="+value+"; path=/";
+    document.cookie = name + "=" + value + "; path=/";
 }
 
 function getCookie(name) {
