@@ -59,6 +59,10 @@ td, th {
 
 /* Wrappers */
 
+.menu-background {
+  background-color: darkmagenta;
+}
+
 #ribbon-wrapper {
   position: sticky;
   top: 0;
