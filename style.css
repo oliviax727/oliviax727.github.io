@@ -63,6 +63,10 @@ td, th {
   background-color: darkmagenta;
 }
 
+.secondary-color-css {
+  background-color: magenta;
+}
+
 #ribbon-wrapper {
   position: sticky;
   top: 0;
