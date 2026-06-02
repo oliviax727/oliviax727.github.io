@@ -221,6 +221,7 @@ function loadPage(_callback=(() => {})) {
     includeHTML(() => {
         _callback();
         updateAges();
+        updateCurrentDates();
         crunch();
         console.log(document.cookie);
     });
