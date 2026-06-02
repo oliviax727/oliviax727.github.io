@@ -62,7 +62,6 @@ td, th {
 #ribbon-wrapper {
   position: sticky;
   top: 0;
-  background-color: darkmagenta;
   color: white;
   height: 11%;
   max-height: 11%;
@@ -90,6 +89,19 @@ td, th {
   min-width: 100%;
   z-index: 4;
   text-align: left;
+}
+
+#rss-feed-wrapper {
+  overflow-y: scroll;
+  height: 90vh;
+  width: 100%;
+  min-width: 100%;
+  border: solid;
+  border-color: white;
+  border-width: 3px;
+  text-align: left;
+  display: flex;
+  padding-top: 3px;
 }
 
 /* Flex divs */
