@@ -187,9 +187,15 @@ function changeSection(section) {
         try {
             document.getElementById("sectionname").innerHTML = formatSection(section);
             document.getElementById("sectionname-menu").innerHTML = formatSection(section);
-            backgrounds = document.getElementsByClassName("menu-background");
-            for (var i = 0; i < backgrounds.length; i++) {
-                backgrounds[i].style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
+
+            primary = document.getElementsByClassName("primary-color-css");
+            for (var i = 0; i < primary.length; i++) {
+                primary[i].style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
+            }
+
+            secondary = document.getElementsByClassName("secondary-color-css");
+            for (var i = 0; i < secondary.length; i++) {
+                secondary[i].style.backgroundColor = SECTION_COLOR_DICT.get(section)[1];
             }
         } catch (error) { 
             console.log("Did not switch to section: "+section+"; "+error);
