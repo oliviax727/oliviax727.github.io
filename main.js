@@ -187,7 +187,10 @@ function changeSection(section) {
         try {
             document.getElementById("sectionname").innerHTML = formatSection(section);
             document.getElementById("sectionname-menu").innerHTML = formatSection(section);
-            document.getElementsByClassName("menu-background").style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
+            backgrounds = document.getElementsByClassName("menu-background");
+            for (var i = 0; i < backgrounds.length; i++) {
+                backgrounds[i].style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
+            }
         } catch (error) { 
             console.log("Did not switch to section: "+section+"; "+error);
         } finally {
