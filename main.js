@@ -373,6 +373,31 @@ function updateAges() {
     }
 }
 
+function updateCurrentDates() {
+    var date;
+
+    datespans = document.getElementsByClassName("date");
+
+    for (let i = 0; i < datespans.length; i++) {
+        span = datespans[i];
+
+        // Get age attribute of span and add 1 day
+        let timediff = span.getAttribute("time");
+
+        // Take day difference and set it inside the HTML
+        let newdate = new Date().setDate(CURRENT_DATE - timediff);
+
+        // Show date if tag is flagged
+        if (span.hasAttribute("showtime")){
+            span.innerHTML = newdate.toLocaleDateString('en-CA') + " (" + newdate.toLocaleTimeString('en-CA') + ")";
+        } else {
+            span.innerHTML = newdate.toLocaleDateString('en-CA')
+        }
+
+        span.classList.remove("date");
+    }
+}
+
 // Alter footer if body is too big
 // NB: DOES NOT EXECUTE
 function expandToWindow() {
