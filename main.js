@@ -22,6 +22,58 @@ let timerinterval = 1000;
 
 const CRUNCH_SIZE = 840;
 
+// ===== ACTIVE UPDATING ===== //
+
+// Change/update section
+function changeSection(section) {
+    var contentdiv;
+
+    // Get contentdiv, remove internal components, and then add includeHTML attribute
+    contentdiv = document.getElementById("content-wrapper");
+    contentdiv.innerHTML = "";
+    contentdiv.setAttribute("w3-include-html", "src/html/" + section + ".html");
+
+    // Re-call include HTML
+    loadPage(() => {
+        try {
+            updatePage(section);
+        } catch (error) {
+            console.log("Did not switch to section: " + section + "; " + error);
+        } finally {
+            console.log("Switched to section: " + section);
+        }
+    });
+}
+
+function initPage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const page = urlParams.get('s');
+
+    if (page != null) {
+        changeSection(page);
+    } else {
+        goToSection('home', false);
+    }
+}
+
+function loadPage(_callback = (() => { })) {
+    // Load the page
+    includeHTML(() => {
+        _callback();
+        crunch();
+        console.log(document.cookie);
+    });
+}
+
+// Save bones and change URL - avoids me having to copy the header everywhere
+// Also allows for users to edit bone counts - it's a feature not a bug, ok?
+function goToSection(section, save = true) {
+    if (save) {
+        saveBones();
+    }
+    window.location.search = "?s=" + section;
+}
+
 // ===== TOGGLE FUNCTIONS ===== //
 
 function showSubList(section) {
@@ -452,58 +504,6 @@ function saveBones() {
     setCookie("l", level);
 
     console.log("Saved bones: b=" + bones + ", g=" + ", l=" + level)
-}
-
-// ===== ACTIVE UPDATING ===== //
-
-// Change/update section
-function changeSection(section) {
-    var contentdiv;
-
-    // Get contentdiv, remove internal components, and then add includeHTML attribute
-    contentdiv = document.getElementById("content-wrapper");
-    contentdiv.innerHTML = "";
-    contentdiv.setAttribute("w3-include-html", "src/html/" + section + ".html");
-
-    // Re-call include HTML
-    loadPage(() => {
-        try {
-            updatePage(section);
-        } catch (error) {
-            console.log("Did not switch to section: " + section + "; " + error);
-        } finally {
-            console.log("Switched to section: " + section);
-        }
-    });
-}
-
-function initPage() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const page = urlParams.get('s');
-
-    if (page != null) {
-        changeSection(page);
-    } else {
-        goToSection('home', false);
-    }
-}
-
-function loadPage(_callback = (() => { })) {
-    // Load the page
-    includeHTML(() => {
-        _callback();
-        crunch();
-        console.log(document.cookie);
-    });
-}
-
-// Save bones and change URL - avoids me having to copy the header everywhere
-// Also allows for users to edit bone counts - it's a feature not a bug, ok?
-function goToSection(section, save = true) {
-    if (save) {
-        saveBones();
-    }
-    window.location.search = "?s=" + section;
 }
 
 // ===== HANDY FUNCTIONS ===== //
