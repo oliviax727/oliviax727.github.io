@@ -2,7 +2,7 @@
 // I HATE CLIENT SIDE JS I MISS NODE BUT I'M NOT BOTHERED TO INTEGRATE IT
 
 // End-user check JS works
-console.info("This message should appear if the javascript integration has worked.")
+console.info("This message should appear if the javascript integration has worked.");
 
 // Constants
 const SECTION_COLOR_DICT = new Map([
@@ -21,6 +21,290 @@ let timer = null;
 let timerinterval = 1000;
 
 const CRUNCH_SIZE = 840;
+
+// ===== TOGGLE FUNCTIONS ===== //
+
+function showSubList(section) {
+    var dropdiv, dropdivwrap;
+
+    // Get divs
+    dropdiv = document.getElementById("drop-" + section);
+    dropdivwrap = document.getElementById("drop-wrapper-" + section);
+
+    // Show dropdown div (CSS should already fix it to the right position)
+    dropdivwrap.hidden = false;
+    dropdiv.hidden = false;
+}
+
+function hideSubList(section) {
+    var dropdiv, dropdivwrap;
+
+    // Get divs
+    dropdiv = document.getElementById("drop-" + section);
+    dropdivwrap = document.getElementById("drop-wrapper-" + section);
+
+    // Hide list
+    dropdivwrap.hidden = true;
+    dropdiv.hidden = true;
+}
+
+// Turn on or off the display of the menu
+function toggleMenu(toggleflag) {
+    let menu = document.getElementById("menu-wrapper");
+    let title = document.getElementById("ribbon-wrapper");
+
+    console.log("Menu toggled");
+
+    if (toggleflag) {
+        menu.hidden = false;
+    } else {
+        menu.hidden = true;
+    }
+}
+
+// Alter webpage if window too small
+function crunch() {
+    // Content altering
+    let centreext = document.getElementById("centreext");
+    let centrediv = document.getElementById("centre");
+    let sidebar = document.getElementById("sidebar");
+    let contentwrapper = document.getElementById("content-wrapper");
+
+    // Ribbon stuff
+    let ribbonmain = document.getElementsByClassName("ribbon-main");
+    let ribboncrunch = document.getElementsByClassName("ribbon-crunch");
+
+    // Don't crunch if there's nothing to crunch
+    if (centrediv == null && centreext == null) {
+        return;
+    }
+
+    // 840 ~ Width that causes Ribbon selectors to become multiline
+    if (window.innerWidth < CRUNCH_SIZE) {
+
+        // Resize main content
+        if (centreext != null) {
+            centreext.style.marginLeft = 0;
+            centreext.style.width = "100%";
+        } else {
+            centrediv.style.marginLeft = 0;
+            centrediv.style.width = "100%";
+            contentwrapper.style.display = "grid";
+            sidebar.style.width = "100%";
+            sidebar.style.paddingLeft = "33%";
+            sidebar.style.paddingRight = "33%";
+            sidebar.style.borderLeft = "none";
+        }
+
+        // Change Ribbon
+        for (let i = 0; i < ribbonmain.length; i++) {
+            ribbonmain[i].style.display = "none";
+        }
+        for (let i = 0; i < ribboncrunch.length; i++) {
+            ribboncrunch[i].style.display = "inline-block";
+        }
+
+    } else {
+
+        // Resize main content
+        if (centreext != null) {
+            centreext.style.marginLeft = "11%";
+            centreext.style.width = "78%";
+        } else {
+            centrediv.style.marginLeft = "11%";
+            centrediv.style.width = "67%";
+            sidebar.style.display = "relative";
+            contentwrapper.style.display = "flex";
+            sidebar.style.width = "11%";
+            sidebar.style.paddingLeft = "1%";
+            sidebar.style.paddingRight = "1%";
+            sidebar.style.borderLeft = "solid";
+        }
+
+        // Change Ribbon
+        for (let i = 0; i < ribboncrunch.length; i++) {
+            ribboncrunch[i].style.display = "none";
+        }
+        for (let i = 0; i < ribbonmain.length; i++) {
+            ribbonmain[i].style.display = "inline-block";
+        }
+    }
+}
+
+window.onresize = crunch;
+
+// ===== POST-LOAD UPDATE FUNCTIONS ===== //
+
+// Update webpage CSS and span elements
+function updatePage(section) {
+    updateSectionNames(section);
+    updateBackgroundColors(section);
+    updateAges();
+    updateCurrentDates();
+}
+
+// Update section names
+function updateSectionNames(section) {
+    if (document.querySelector("#sectionname")) {
+        document.getElementById("sectionname").innerHTML = formatSection(section);
+    }
+
+    if (document.querySelector("#sectionname-menu")) {
+        document.getElementById("sectionname-menu").innerHTML = formatSection(section);
+    }
+}
+
+// Update ribbon/menu background colors
+function updateBackgroundColors(section) {
+    primary = document.getElementsByClassName("primary-color-css");
+    for (var i = 0; i < primary.length; i++) {
+        primary[i].style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
+    }
+
+    secondary = document.getElementsByClassName("secondary-color-css");
+    for (var i = 0; i < secondary.length; i++) {
+        secondary[i].style.backgroundColor = SECTION_COLOR_DICT.get(section)[1];
+    }
+}
+
+// Change all age values in spans
+function updateAges() {
+    var agespans;
+
+    agespans = document.getElementsByClassName("age");
+
+    for (let i = 0; i < agespans.length; i++) {
+        span = agespans[i];
+
+        // Get age attribute of span and add 1 day
+        let agedate = new Date(span.getAttribute("date"));
+        agedate.setHours(0, 0, 0, 0);
+
+        // Take year difference and set it inside the HTML
+        let agediff = new Date(CURRENT_DATE - agedate).getFullYear() - 1970;
+
+        // Show date if tag is flagged
+        if (span.hasAttribute("showdate")) {
+            span.innerHTML = agediff + " (" + agedate.toLocaleDateString('en-AU') + ")";
+        } else {
+            span.innerHTML = agediff
+        }
+
+        span.classList.remove("age");
+    }
+}
+
+function updateCurrentDates() {
+    var date;
+
+    datespans = document.getElementsByClassName("current-date");
+
+    for (let i = 0; i < datespans.length; i++) {
+        span = datespans[i];
+
+        span.innerHTML = CURRENT_DATE.toDateString('en-AU');
+
+        span.classList.remove("date");
+    }
+}
+
+// Alter footer if body is too big
+// NB: DOES NOT EXECUTE
+function expandToWindow() {
+    var footer, footerwrapper
+
+    footerwrapper = document.getElementById("footer-wrapper");
+    footer = document.getElementById("footer");
+
+    // Don't expand if footer hasn't loaded yet
+    if (footerwrapper == null || footer == null) {
+        return;
+    }
+
+    if (document.body.clientHeight > window.innerHeight) {
+        footerwrapper.style.position = "relative";
+        footer.style.position = "relative";
+    } else {
+        footerwrapper.style.position = "absolute";
+        footer.style.position = "fixed";
+    }
+}
+
+// ===== FILE HANDLING ===== //
+
+// Read file via XHTTP and use it
+function read(_callback, file) {
+    // Create an XMLHttpRequest object
+    const xhttp = new XMLHttpRequest();
+
+    // On data retreival
+    xhttp.onload = function () {
+        console.log("Loaded " + file)
+        _callback();
+    }
+
+    // Send a request
+    xhttp.open("GET", file);
+    xhttp.send();
+    return;
+}
+
+// XHTML integration to allow all of the pages to be inserted into eachother (W3 Schools)
+function includeHTML(_callback, _fileload = null) {
+    var z, i, elmnt, file, xhttp;
+
+    // Loop through a collection of all HTML elements:
+    z = document.getElementsByTagName("*");
+
+    for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+
+        // search for elements with a certain atrribute:
+        file = elmnt.getAttribute("w3-include-html");
+
+        if (file) {
+            // Make an HTTP request using the attribute value as the file name:
+            xhttp = new XMLHttpRequest();
+
+            // Wait for state change
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+
+                    // Catch errors
+                    if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                    else if (this.status == 404) { elmnt.innerHTML = "404 Page not found."; }
+                    else {
+                        elmnt.innerHTML =
+                            "There was some unidentified issue stopping the webpage from loading." +
+                            "\nError Status: " + this.status;
+                    }
+
+                    // Remove the attribute, and call this function once more:
+                    elmnt.removeAttribute("w3-include-html");
+
+                    // Recursive call
+                    console.log("Loaded " + file);
+                    includeHTML(_callback);
+
+                    // Load bones in footer
+                    if (file == 'src/layout/footer.html') {
+                        loadBones();
+                    }
+
+                    // XHTTP doesn't like async/await, so just do it every time the XHTTP is loaded
+                    _callback();
+                }
+            }
+
+            // Open file
+            xhttp.open("GET", file, true);
+            xhttp.send();
+
+            // Exit the function:
+            return;
+        }
+    }
+}
 
 // ===== BONES ===== //
 
@@ -200,7 +484,7 @@ function initPage() {
     if (page != null) {
         changeSection(page);
     } else {
-        loadPage();
+        goToSection('home', false);
     }
 }
 
@@ -215,293 +499,11 @@ function loadPage(_callback = (() => { })) {
 
 // Save bones and change URL - avoids me having to copy the header everywhere
 // Also allows for users to edit bone counts - it's a feature not a bug, ok?
-function goToSection(section) {
-    saveBones();
-    window.location.href = "?s=" + section;
-}
-
-// ===== TOGGLE FUNCTIONS ===== //
-
-function showSubList(section) {
-    var dropdiv, dropdivwrap;
-
-    // Get divs
-    dropdiv = document.getElementById("drop-" + section);
-    dropdivwrap = document.getElementById("drop-wrapper-" + section);
-
-    // Show dropdown div (CSS should already fix it to the right position)
-    dropdivwrap.hidden = false;
-    dropdiv.hidden = false;
-}
-
-function hideSubList(section) {
-    var dropdiv, dropdivwrap;
-
-    // Get divs
-    dropdiv = document.getElementById("drop-" + section);
-    dropdivwrap = document.getElementById("drop-wrapper-" + section);
-
-    // Hide list
-    dropdivwrap.hidden = true;
-    dropdiv.hidden = true;
-}
-
-// Turn on or off the display of the menu
-function toggleMenu(toggleflag) {
-    let menu = document.getElementById("menu-wrapper");
-    let title = document.getElementById("ribbon-wrapper");
-
-    console.log("Menu toggled");
-
-    if (toggleflag) {
-        menu.hidden = false;
-    } else {
-        menu.hidden = true;
+function goToSection(section, save = true) {
+    if (save) {
+        saveBones();
     }
-}
-
-// Alter webpage if window too small
-function crunch() {
-    // Content altering
-    let centreext = document.getElementById("centreext");
-    let centrediv = document.getElementById("centre");
-    let sidebar = document.getElementById("sidebar");
-    let contentwrapper = document.getElementById("content-wrapper");
-
-    // Ribbon stuff
-    let ribbonmain = document.getElementsByClassName("ribbon-main");
-    let ribboncrunch = document.getElementsByClassName("ribbon-crunch");
-
-    // Don't crunch if there's nothing to crunch
-    if (centrediv == null && centreext == null) {
-        return;
-    }
-
-    // 840 ~ Width that causes Ribbon selectors to become multiline
-    if (window.innerWidth < CRUNCH_SIZE) {
-
-        // Resize main content
-        if (centreext != null) {
-            centreext.style.marginLeft = 0;
-            centreext.style.width = "100%";
-        } else {
-            centrediv.style.marginLeft = 0;
-            centrediv.style.width = "100%";
-            contentwrapper.style.display = "grid";
-            sidebar.style.width = "100%";
-            sidebar.style.paddingLeft = "33%";
-            sidebar.style.paddingRight = "33%";
-            sidebar.style.borderLeft = "none";
-        }
-
-        // Change Ribbon
-        for (let i = 0; i < ribbonmain.length; i++) {
-            ribbonmain[i].style.display = "none";
-        }
-        for (let i = 0; i < ribboncrunch.length; i++) {
-            ribboncrunch[i].style.display = "inline-block";
-        }
-
-    } else {
-
-        // Resize main content
-        if (centreext != null) {
-            centreext.style.marginLeft = "11%";
-            centreext.style.width = "78%";
-        } else {
-            centrediv.style.marginLeft = "11%";
-            centrediv.style.width = "67%";
-            sidebar.style.display = "relative";
-            contentwrapper.style.display = "flex";
-            sidebar.style.width = "11%";
-            sidebar.style.paddingLeft = "1%";
-            sidebar.style.paddingRight = "1%";
-            sidebar.style.borderLeft = "solid";
-        }
-
-        // Change Ribbon
-        for (let i = 0; i < ribboncrunch.length; i++) {
-            ribboncrunch[i].style.display = "none";
-        }
-        for (let i = 0; i < ribbonmain.length; i++) {
-            ribbonmain[i].style.display = "inline-block";
-        }
-    }
-}
-
-window.onresize = crunch;
-
-// ===== POST-LOAD UPDATE FUNCTIONS ===== //
-
-// Update webpage CSS and span elements
-function updatePage(section) {
-    updateSectionNames(section);
-    updateBackgroundColors(section);
-    updateAges();
-    updateCurrentDates();
-}
-
-// Update section names
-function updateSectionNames(section) {
-    if (document.querySelector("#sectionname")) {
-        document.getElementById("sectionname").innerHTML = formatSection(section);
-    }
-    
-    if (document.querySelector("#sectionname-menu")) {
-        document.getElementById("sectionname-menu").innerHTML = formatSection(section);
-    }
-}
-
-// Update ribbon/menu background colors
-function updateBackgroundColors(section) {
-    primary = document.getElementsByClassName("primary-color-css");
-    for (var i = 0; i < primary.length; i++) {
-        primary[i].style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
-    }
-
-    secondary = document.getElementsByClassName("secondary-color-css");
-    for (var i = 0; i < secondary.length; i++) {
-        secondary[i].style.backgroundColor = SECTION_COLOR_DICT.get(section)[1];
-    }
-}
-
-// Change all age values in spans
-function updateAges() {
-    var agespans;
-
-    agespans = document.getElementsByClassName("age");
-
-    for (let i = 0; i < agespans.length; i++) {
-        span = agespans[i];
-
-        // Get age attribute of span and add 1 day
-        let agedate = new Date(span.getAttribute("date"));
-        agedate.setHours(0, 0, 0, 0);
-
-        // Take year difference and set it inside the HTML
-        let agediff = new Date(CURRENT_DATE - agedate).getFullYear() - 1970;
-
-        // Show date if tag is flagged
-        if (span.hasAttribute("showdate")) {
-            span.innerHTML = agediff + " (" + agedate.toLocaleDateString('en-AU') + ")";
-        } else {
-            span.innerHTML = agediff
-        }
-
-        span.classList.remove("age");
-    }
-}
-
-function updateCurrentDates() {
-    var date;
-
-    datespans = document.getElementsByClassName("current-date");
-
-    for (let i = 0; i < datespans.length; i++) {
-        span = datespans[i];
-
-        span.innerHTML = CURRENT_DATE.toDateString('en-AU');
-
-        span.classList.remove("date");
-    }
-}
-
-// Alter footer if body is too big
-// NB: DOES NOT EXECUTE
-function expandToWindow() {
-    var footer, footerwrapper
-
-    footerwrapper = document.getElementById("footer-wrapper");
-    footer = document.getElementById("footer");
-
-    // Don't expand if footer hasn't loaded yet
-    if (footerwrapper == null || footer == null) {
-        return;
-    }
-
-    if (document.body.clientHeight > window.innerHeight) {
-        footerwrapper.style.position = "relative";
-        footer.style.position = "relative";
-    } else {
-        footerwrapper.style.position = "absolute";
-        footer.style.position = "fixed";
-    }
-}
-
-// ===== FILE HANDLING ===== //
-
-// Read file via XHTTP and use it
-function read(_callback, file) {
-    // Create an XMLHttpRequest object
-    const xhttp = new XMLHttpRequest();
-
-    // On data retreival
-    xhttp.onload = function () {
-        console.log("Loaded " + file)
-        _callback();
-    }
-
-    // Send a request
-    xhttp.open("GET", file);
-    xhttp.send();
-    return;
-}
-
-// XHTML integration to allow all of the pages to be inserted into eachother (W3 Schools)
-function includeHTML(_callback, _fileload = null) {
-    var z, i, elmnt, file, xhttp;
-
-    // Loop through a collection of all HTML elements:
-    z = document.getElementsByTagName("*");
-
-    for (i = 0; i < z.length; i++) {
-        elmnt = z[i];
-
-        // search for elements with a certain atrribute:
-        file = elmnt.getAttribute("w3-include-html");
-
-        if (file) {
-            // Make an HTTP request using the attribute value as the file name:
-            xhttp = new XMLHttpRequest();
-
-            // Wait for state change
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4) {
-
-                    // Catch errors
-                    if (this.status == 200) { elmnt.innerHTML = this.responseText; }
-                    else if (this.status == 404) { elmnt.innerHTML = "404 Page not found."; }
-                    else {
-                        elmnt.innerHTML =
-                            "There was some unidentified issue stopping the webpage from loading." +
-                            "\nError Status: " + this.status;
-                    }
-
-                    // Remove the attribute, and call this function once more:
-                    elmnt.removeAttribute("w3-include-html");
-
-                    // Recursive call
-                    console.log("Loaded " + file);
-                    includeHTML(_callback);
-
-                    // Load bones in footer
-                    if (file == 'src/layout/footer.html') {
-                        loadBones();
-                    }
-
-                    // XHTTP doesn't like async/await, so just do it every time the XHTTP is loaded
-                    _callback();
-                }
-            }
-
-            // Open file
-            xhttp.open("GET", file, true);
-            xhttp.send();
-
-            // Exit the function:
-            return;
-        }
-    }
+    window.location.search = "?s=" + section;
 }
 
 // ===== HANDY FUNCTIONS ===== //
