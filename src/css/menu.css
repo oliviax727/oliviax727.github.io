@@ -1,6 +1,7 @@
 /* Side Menu Div */
 
 #sidebar-ribbon {
+  background-color: var(--vibrant-dark-color);
   position: fixed;
   height: 100%;
   width: 180px;
@@ -35,7 +36,7 @@
 }
 
 #navbar-menu a:hover {
-  background-color: #666;
+  background-color: var(--mid-gray);
 }
 
 .sublist {

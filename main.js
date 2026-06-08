@@ -6,13 +6,13 @@ console.info("This message should appear if the javascript integration has worke
 
 // Constants
 const SECTION_COLOR_DICT = new Map([
-    ["home", ["darkmagenta", "magenta"]],
-    ["about-professional", ["darkslateblue", "slateblue"]],
-    ["about-personal", ["darkgreen", "green"]],
-    ["about-political", ["darkred", "red"]],
-    ["works", ["darkgoldenrod", "goldenrod"]],
-    ["curriculum_vitae", ["chocolate", "darkorange"]],
-    ["links", ["darkblue", "blue"]]
+    ["home", 300],
+    ["about-professional", 250],
+    ["about-personal", 120],
+    ["about-political", 0],
+    ["works", 45],
+    ["curriculum_vitae", 25],
+    ["links", 240]
 ]);
 
 const CURRENT_DATE = new Date();
@@ -208,15 +208,7 @@ function updateSectionNames(section) {
 
 // Update ribbon/menu background colors
 function updateBackgroundColors(section) {
-    primary = document.getElementsByClassName("primary-color-css");
-    for (var i = 0; i < primary.length; i++) {
-        primary[i].style.backgroundColor = SECTION_COLOR_DICT.get(section)[0];
-    }
-
-    secondary = document.getElementsByClassName("secondary-color-css");
-    for (var i = 0; i < secondary.length; i++) {
-        secondary[i].style.backgroundColor = SECTION_COLOR_DICT.get(section)[1];
-    }
+    document.documentElement.style.setProperty('--base-hue', SECTION_COLOR_DICT.get(section));
 }
 
 // Change all age values in spans

@@ -1,7 +1,7 @@
 /* Central Text Div */
 
 .centerdiv {
-  background-color: #444;
+  background-color: var(--dark-gray);
   position: relative;
   display: block;
   display:inline-block;

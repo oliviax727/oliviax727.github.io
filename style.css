@@ -5,6 +5,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,700&display=swap');
 
+/* Root colour variables */
+
+:root {
+  /* Base Colour */
+  --base-hue: 300;
+
+  /* High-Saturation Colours */
+  --vibrant-dark-color:  hsl(var(--base-hue), 100%, 25%);
+  --vibrant-light-color: hsl(var(--base-hue), 100%, 50%);
+  --vibrant-wash-color:  hsl(var(--base-hue), 100%, 75%);
+
+  /* Moderate-Saturation Colours */
+  --mid-dark-color:  hsl(var(--base-hue), 50%, 25%);
+  --mid-light-color: hsl(var(--base-hue), 50%, 50%);
+  --mid-wash-color:  hsl(var(--base-hue), 50%, 75%);
+
+  /* Low Saturation Colours */
+  --pale-dark-color:  hsl(var(--base-hue), 25%, 25%);
+  --pale-light-color: hsl(var(--base-hue), 25%, 50%);
+  --pale-wash-color:  hsl(var(--base-hue), 25%, 75%);
+
+  /* Greyscale */
+  --dark-gray:   #444;
+  --mid-gray:    #666;
+  --light-gray:  #DDD;
+}
+
 /* Main Setup */
 
 body {
@@ -21,19 +48,19 @@ body {
 /* Da Linkys */
 
 a:link {
-  color: orchid;
+  color: var(--mid-light-color);
 }
 
 a:visited {
-  color: mediumslateblue;
+  color: var(--mid-dark-color);
 }
 
 a:active {
-  color: lavender;
+  color: var(--mid-wash-color);
 }
 
 button {
-  background-color: #444;
+  background-color: var(--dark-gray);
   border: solid;
   border-color: white;
   border-width: 3px;
@@ -50,7 +77,8 @@ table {
   width: 100%;
 }
 
-td, th {
+td,
+th {
   width: max-content;
   padding-left: 10px;
   padding-right: 10px;
@@ -58,14 +86,6 @@ td, th {
 }
 
 /* Wrappers */
-
-.primary-color-css {
-  background-color: darkmagenta;
-}
-
-.secondary-color-css {
-  background-color: magenta;
-}
 
 #ribbon-wrapper {
   position: sticky;
@@ -86,6 +106,8 @@ td, th {
   flex-direction: row;
 
   z-index: 3;
+
+  background-color: var(--vibrant-dark-color);
 }
 
 #menu-wrapper {
@@ -109,7 +131,6 @@ td, th {
   border-width: 3px;
   text-align: left;
   display: flex;
-  padding-top: 3px;
 }
 
 /* Flex divs */
