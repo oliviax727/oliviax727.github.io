@@ -24,8 +24,8 @@ const DEFAULT_SECTION = "home";
 
 let mhtml = new MainHTML(SECTION_COLOR_DICT, CRUNCH_SIZE, DEFAULT_SECTION);
 
-window.bm = BoneMiner;
 window.help = Helpers;
+window.bm = BoneMiner;
 
 window.onload = mhtml.initPage;
 window.onresize = mhtml.crunch;
