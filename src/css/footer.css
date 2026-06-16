@@ -21,3 +21,19 @@
   text-align: center;
   position: relative;
 }
+
+.crosslink * {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.crosslink p {
+  margin-left: 1ch;
+}
+
+.crosslink img {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  object-fit: cover;
+}
