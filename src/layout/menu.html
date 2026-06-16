@@ -6,24 +6,24 @@
 </head>
 
 <body>
-    <div id="sidebar-ribbon" onmouseleave="toggleMenu(false);">
+    <div id="sidebar-ribbon" onmouseleave="mhtml.toggleMenu(false);">
         <div class="menu-wrapper" id="sectionname-menu-wrapper">
             Section - <br><span id="sectionname-menu">Curriculum Vitae</span>
         </div>
 
         <div class="menu-wrapper" id="navbar-menu">
-            <a onclick="goToSection('home')">Home</a>
+            <a onclick="mhtml.goToSection('home');">Home</a>
             <span>About</span>
             <div class="sublist" id="about-sublist">
-                <a onclick="goToSection('about-professional')">Professional</a>
-                <a onclick="goToSection('about-personal')">Personal</a>
-                <a onclick="goToSection('about-political')">Political</a>
+                <a onclick="mhtml.goToSection('about-professional');">Professional</a>
+                <a onclick="mhtml.goToSection('about-personal');">Personal</a>
+                <a onclick="mhtml.goToSection('about-political');">Political</a>
             </div>
-            <a onclick="goToSection('works')">Works</a>
-            <a onclick="goToSection('curriculum_vitae')">Curriculum Vitae</a>
-            <a onclick="goToSection('links')">Links</a>
+            <a onclick="mhtml.goToSection('works');">Works</a>
+            <a onclick="mhtml.goToSection('curriculum_vitae');">Curriculum Vitae</a>
+            <a onclick="mhtml.goToSection('links');">Links</a>
         </div>
     </div>
 
-    <div id="decolourbox" onclick="toggleMenu(false);"></div>
+    <div id="decolourbox" onclick="mhtml.toggleMenu(false);"></div>
 </body>

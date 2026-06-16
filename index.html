@@ -8,31 +8,33 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@3.0.1/modern-normalize.min.css">
 
     <!-- Title and icons -->
-    <link href="src/img/boomcon.jpg" sizes="16x16" rel="icon" />
-    <title>OHRW/OHRF</title>
+    <link href="src/img/uranuscon.png" sizes="16x16" rel="icon"/>
+    <title>OHRW's News Feed</title>
 
     <!-- Styling -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Scripts, native and API -->
-    <script src="main.js"></script>
+    <script src="index.js" type="module"></script>
+
+    <!--RSS Feeds-->
+    <link rel="alternate" type="application/rss+xml" title="News Feed" href="src/data/test_feed.xml">
 </head>
 
-<body onload="initPage();">
+<body>
     <!-- Sidebar div (only on crunch) -->
-    <div hidden id="menu-wrapper" w3-include-html="src/layout/menu.html"></div>
+    <div hidden id="menu-wrapper" html-ref="src/layout/menu.html"></div>
 
     <!-- Title/Ribbon div -->
-    <div id="ribbon-wrapper" w3-include-html="src/layout/ribbon.html"></div>
+    <div id="ribbon-wrapper" class="primary-color-css" html-ref="src/layout/ribbon.html"></div>
     <br>
 
     <!-- Main content div -->
-    <div class="flexdiv" id="content-wrapper" w3-include-html="src/html/home.html">
+    <div class="flexdiv" id="content-wrapper">
     </div>
     <br>
 
     <!-- Footer div -->
-    <div id="footer-wrapper" class="footer-wrapper" w3-include-html="src/layout/footer.html">
+    <div id="footer-wrapper" class="footer-wrapper" html-ref="src/layout/footer.html">
     </div>
-
 </body>
