@@ -1,3 +1,5 @@
+import BoneMiner from "./miner.js";
+import Helpers from "./helpers.js";
 
 // Main HTML Class
 class MainHTML {
@@ -6,9 +8,6 @@ class MainHTML {
     CURRENT_DATE;
 
     IDENTITY = () => { };
-
-    timer = null;
-    timeInterval = 1000;
 
     SECTION_COLOR_DICT;
     CRUNCH_SIZE;
@@ -76,7 +75,7 @@ class MainHTML {
     // Also allows for users to edit bone counts - it's a feature not a bug, ok?
     goToSection(section, save = true) {
         if (save) {
-            self.mhtml.saveBones();
+            BoneMiner.saveBones();
         }
         window.location.search = "?s=" + section;
     }
@@ -223,11 +222,11 @@ class MainHTML {
     // Update section names
     updateSectionNames(section) {
         if (document.querySelector("#sectionname")) {
-            document.getElementById("sectionname").innerHTML = self.mhtml.formatSection(section);
+            document.getElementById("sectionname").innerHTML = Helpers.formatSection(section);
         }
 
         if (document.querySelector("#sectionname-menu")) {
-            document.getElementById("sectionname-menu").innerHTML = self.mhtml.formatSection(section);
+            document.getElementById("sectionname-menu").innerHTML = Helpers.formatSection(section);
         }
     }
 
@@ -328,7 +327,7 @@ class MainHTML {
 
                 // Load bones in footer
                 if (file == 'src/layout/footer.html') {
-                    self.mhtml.loadBones();
+                    BoneMiner.loadBones();
                 }
 
                 // Recursive call
@@ -340,182 +339,6 @@ class MainHTML {
 
         // Exit the function:
         return;
-    }
-
-    // ===== BONES ===== //
-
-    // Funny-Haha Bone Counter. Bones reset on page load
-    dig4Bones(makealert = false) {
-        var bones, gold, find
-
-        if (!makealert) { console.log("Digging ...") }
-
-        // Get bone counter footer element
-        bones = document.getElementById("count-bones");
-        gold = document.getElementById("count-gold");
-
-        find = Math.random();
-
-        if (find < 0.005) {
-            if (makealert) { alert("You've struck gold!"); }
-            gold.innerHTML = parseInt(gold.innerHTML) + 1;
-        } else if (find <= 0.5) {
-            let foundbones = Math.floor(1 / find - 1);
-            if (makealert) { alert("You found " + foundbones + " bone(s)!"); }
-            bones.innerHTML = parseInt(bones.innerHTML) + foundbones;
-        } else {
-            if (makealert) { alert("You got no bones :("); }
-        }
-
-        self.mhtml.saveBones();
-    }
-
-    createAutoMiner(override = false) {
-        // Get bone counter footer element, requires 100 bones
-        let bones = document.getElementById("count-bones");
-
-        // Get buttons
-        let createbutton = document.getElementById("create-auto");
-        let upgradebutton = document.getElementById("upgrade-auto");
-        let level = document.getElementById("count-level");
-
-        if (bones.innerHTML >= 100 || override) {
-            console.log("Creating Miner ...");
-            if (!override) {
-                bones.innerHTML = parseInt(bones.innerHTML) - 100;
-            }
-            self.mhtml.timer = window.setInterval(dig4Bones, self.mhtml.timeInterval);
-            createbutton.hidden = true;
-            upgradebutton.hidden = false;
-            level.innerHTML = 1;
-        }
-
-        self.mhtml.saveBones();
-    }
-
-    upgradeAutoMiner(noalert = false, override = false) {
-        // Get gold counter footer element, requires 1 gold
-        let bones = document.getElementById("count-bones");
-        let gold = document.getElementById("count-gold");
-        let level = document.getElementById("count-level");
-
-        if (level.innerHTML == "Max") {
-            return;
-        }
-
-        if ((gold.innerHTML >= 1 && bones.innerHTML >= 500) || override) {
-            if (self.mhtml.timeInterval <= 100) {
-                self.mhtml.timeInterval = 1;
-                if (!noalert) { alert("Miner Fully Upgraded!"); }
-                document.getElementById("upgrade-auto").hidden = true;
-            } else {
-                self.mhtml.timeInterval -= 100;
-            }
-
-            console.log("Upgrading Miner ...");
-
-            level.innerHTML = parseInt(level.innerHTML) + 1;
-            if (!override) {
-                gold.innerHTML = parseInt(gold.innerHTML) - 1;
-                bones.innerHTML = parseInt(bones.innerHTML) - 500;
-            }
-            window.clearInterval(self.mhtml.timer);
-            self.mhtml.timer = window.setInterval(dig4Bones, self.mhtml.timeInterval);
-
-            if (level.innerHTML == 11) {
-                level.innerHTML = "Max"
-            }
-        }
-
-        self.mhtml.saveBones();
-    }
-
-    loadBones() {
-        // Give plenty of gold and bones for levelleing the autominer
-        let level = parseInt(self.mhtml.getCookie("l"));
-        const bones = parseInt(self.mhtml.getCookie("b"));
-        const gold = parseInt(self.mhtml.getCookie("g"));
-
-        if (isNaN(level)) {
-            level = 0;
-        }
-
-        document.getElementById("count-level").innerHTML = 0;
-
-        // Auto-click level up
-        if (level > 0) {
-            self.mhtml.createAutoMiner(override = true);
-            for (i = 1; i < level; i++) {
-                self.mhtml.upgradeAutoMiner(noalert = true, override = true);
-            }
-        }
-
-        // Set static span elements
-        document.getElementById("count-bones").innerHTML = isNaN(bones) ? 0 : bones;
-        document.getElementById("count-gold").innerHTML = isNaN(gold) ? 0 : gold;
-    }
-
-    resetBones() {
-        console.log("Resetting Game");
-
-        // Clear autominer self.mhtml.timer
-        window.clearInterval(self.mhtml.timer);
-
-        // Reset Buttons
-        document.getElementById("upgrade-auto").hidden = true;
-        document.getElementById("create-auto").hidden = false;
-
-        // Set all elements to 0
-        document.getElementById("count-bones").innerHTML = 0;
-        document.getElementById("count-gold").innerHTML = 0;
-        document.getElementById("count-level").innerHTML = 0;
-
-        // Reset cookies - doesn't delete them
-        self.mhtml.setCookie("l", null);
-        self.mhtml.setCookie("g", null);
-        self.mhtml.setCookie("b", null);
-    }
-
-    saveBones() {
-        // Get bones to save
-        let bones = document.getElementById("count-bones").innerHTML;
-        let gold = document.getElementById("count-gold").innerHTML;
-        let level = document.getElementById("count-level").innerHTML;
-
-        // Set cookies
-        self.mhtml.setCookie("b", bones);
-        self.mhtml.setCookie("g", gold);
-        self.mhtml.setCookie("l", level);
-
-        console.log("Saved bones: b=" + bones + ", g=" + ", l=" + level)
-    }
-
-    // ===== HANDY FUNCTIONS ===== //
-
-    setCookie(name, value) {
-        document.cookie = name + "=" + value + "; path=/";
-    }
-
-    getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        return parts.pop().split(';').shift();
-    }
-
-    capitalize(str) {
-        return String(str).charAt(0).toUpperCase() + String(str).slice(1);
-    }
-
-    capitalizeEach(str) {
-        let words = str.split(" ");
-        for (let i = 0; i < words.length; i++) {
-            words[i] = self.mhtml.capitalize(words[i])
-        }
-        return words.join(" ")
-    }
-
-    formatSection(str) {
-        return self.mhtml.capitalizeEach(str.replace("-", ": ").replace("_", " "));
     }
 }
 
