@@ -1,4 +1,4 @@
-import BoneMiner from "./miner.js";
+import BoneMiner from "./game.js";
 import Helpers from "./helpers.js";
 
 // Main HTML Class

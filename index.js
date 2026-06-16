@@ -5,7 +5,7 @@ console.info("This message should appear if the javascript integration has worke
 
 import Helpers from './src/scripts/helpers.js';
 import MainHTML from './src/scripts/main.js';
-import BoneMiner from './src/scripts/miner.js';
+import BoneMiner from './src/scripts/game.js';
 
 // Constants
 const SECTION_COLOR_DICT = new Map([
