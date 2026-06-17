@@ -2,7 +2,7 @@ class Helpers {
 
     // ===== HANDY FUNCTIONS ===== //
 
-    static setCookie(name, value, path = "/", factorial_age = 10) {
+    static setCookie(name, value, path = "/", factorial_age = 11) {
         document.cookie = [
             name + "=" + value,
             "path=" + path,
@@ -23,9 +23,9 @@ class Helpers {
     static capitalizeEach(str) {
         let words = str.split(" ");
         for (let i = 0; i < words.length; i++) {
-            words[i] = Helpers.capitalize(words[i])
+            words[i] = Helpers.capitalize(words[i]);
         }
-        return words.join(" ")
+        return words.join(" ");
     }
 
     static formatSection(str) {
@@ -43,4 +43,4 @@ class Helpers {
     }
 }
 
-export default Helpers
+export default Helpers;
