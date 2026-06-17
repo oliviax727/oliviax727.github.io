@@ -59,8 +59,8 @@ class MainHTML {
             () => {
                 try {
                     self.mhtml.updatePage(section);
-                    console.log("update page")
                     self.mhtml.crunch();
+                    BoneMiner.loadBones();
                 } catch (error) {
                     console.log("Did not switch to section: " + section + "; " + error);
                 } finally {
@@ -243,7 +243,7 @@ class MainHTML {
 
         for (let i = 0; i < agespans.length; i++) {
             var span = agespans[i];
-
+            
             // Get age attribute of span and add 1 day
             let agedate = new Date(span.getAttribute("date"));
             agedate.setHours(0, 0, 0, 0);
@@ -257,8 +257,6 @@ class MainHTML {
             } else {
                 span.innerHTML = agediff
             }
-
-            span.classList.remove("age");
         }
     }
 
@@ -271,8 +269,6 @@ class MainHTML {
             var span = datespans[i];
 
             span.innerHTML = self.mhtml.CURRENT_DATE.toDateString('en-AU');
-
-            span.classList.remove("date");
         }
     }
 
@@ -324,11 +320,6 @@ class MainHTML {
 
                 // XHTTP doesn't like async/await, so just do it every time the XHTTP is loaded
                 _recurse(file);
-
-                // Load bones in footer
-                if (file == 'src/layout/footer.html') {
-                    BoneMiner.loadBones();
-                }
 
                 // Recursive call
                 self.mhtml.includeHTML(_recurse, _then);
