@@ -1,8 +1,8 @@
 class Helpers {
     // ===== HANDY FUNCTIONS ===== //
 
-    static setCookie(name, value) {
-        document.cookie = name + "=" + value + "; path=/";
+    static setCookie(name, value, path = "/") {
+        document.cookie = name + "=" + value + "; path=" + path;
     }
 
     static getCookie(name) {
