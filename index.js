@@ -18,11 +18,15 @@ const SECTION_COLOR_DICT = new Map([
     ["links", 240]
 ]);
 
+<<<<<<< HEAD
 const CRUNCH_SIZE = 840;
+=======
+const DEFAULT_CRUNCH_SIZE = 1120;
+>>>>>>> fd78b61 (subcommit - main stuff - fullscreen)
 
 const DEFAULT_SECTION = "home";
 
-let mhtml = new MainHTML(SECTION_COLOR_DICT, CRUNCH_SIZE, DEFAULT_SECTION);
+let mhtml = new MainHTML(SECTION_COLOR_DICT, DEFAULT_CRUNCH_SIZE, DEFAULT_SECTION);
 
 window.help = Helpers;
 window.bm = BoneMiner;

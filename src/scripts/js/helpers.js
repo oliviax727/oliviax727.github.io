@@ -41,6 +41,14 @@ class Helpers {
 
         return fn;
     }
+
+    static iterateThroughChildren(element, _iterator) {
+        var children = element.children;
+        for (let i = 0; i < children.length; i++) {
+            _iterator(children[i]);
+            Helpers.iterateThroughChildren(children[i], _iterator);
+        }
+    }
 }
 
 export default Helpers;

@@ -10,14 +10,16 @@ class MainHTML {
     IDENTITY = () => { };
 
     SECTION_COLOR_DICT;
+    DEFAULT_CRUNCH_SIZE;
     CRUNCH_SIZE;
-    DEFAULT_SECTION
+    DEFAULT_SECTION;
 
     // ===== ACTIVE UPDATING ===== //
 
     // Set window functions
     constructor(section_color_dict, crunch_size, default_section) {
         this.SECTION_COLOR_DICT = section_color_dict;
+        this.DEFAULT_CRUNCH_SIZE = crunch_size;
         this.CRUNCH_SIZE = crunch_size;
         this.DEFAULT_SECTION = default_section;
         this.CURRENT_DATE = new Date();
@@ -50,9 +52,9 @@ class MainHTML {
         self.mhtml.loadPage(section);
     }
 
-    loadPage(section) {
+    async loadPage(section, _callback = self.mhtml.IDENTITY) {
         // Load the page
-        self.mhtml.includeHTML(
+        await self.mhtml.includeHTML(
             (file) => {
                 console.log("Loaded file: " + file)
             },
@@ -61,6 +63,7 @@ class MainHTML {
                     self.mhtml.updatePage(section);
                     self.mhtml.crunch();
                     BoneMiner.loadBones();
+                    _callback();
                 } catch (error) {
                     console.log("Did not switch to section: " + section + "; " + error);
                 } finally {
@@ -213,8 +216,10 @@ class MainHTML {
 
     // Update webpage CSS and span elements
     updatePage(section) {
-        self.mhtml.updateSectionNames(section);
-        self.mhtml.updateBackgroundColors(section);
+        if (section != null) {
+            self.mhtml.updateSectionNames(section);
+            self.mhtml.updateBackgroundColors(section);
+        }
         self.mhtml.updateAges();
         self.mhtml.updateCurrentDates();
     }
