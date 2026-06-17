@@ -3,9 +3,9 @@
 // End-user check JS works
 console.info("This message should appear if the javascript integration has worked.");
 
-import Helpers from './src/scripts/helpers.js';
-import MainHTML from './src/scripts/main.js';
-import BoneMiner from './src/scripts/game.js';
+import Helpers from './src/scripts/js/helpers.js';
+import MainHTML from './src/scripts/js/main.js';
+import BoneMiner from './src/scripts/js/game.js';
 
 // Constants
 const SECTION_COLOR_DICT = new Map([
