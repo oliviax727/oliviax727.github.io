@@ -60,6 +60,7 @@ class MainHTML {
             () => {
                 try {
                     self.mhtml.updatePage(section);
+                    console.log("update page")
                     self.mhtml.crunch();
                 } catch (error) {
                     console.log("Did not switch to section: " + section + "; " + error);
