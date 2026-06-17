@@ -52,7 +52,6 @@ class MainHTML {
 
     loadPage(section) {
         // Load the page
-
         self.mhtml.includeHTML(
             (file) => {
                 console.log("Loaded file: " + file)
