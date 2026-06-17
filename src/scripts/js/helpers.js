@@ -33,7 +33,7 @@ class Helpers {
     }
 
     static factrorial(n) {
-        fn = 1;
+        let fn = 1;
 
         for (let i = 2; i <= n; i++) {
             fn *= i;
