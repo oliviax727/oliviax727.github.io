@@ -1,8 +1,13 @@
 class Helpers {
+
     // ===== HANDY FUNCTIONS ===== //
 
-    static setCookie(name, value, path = "/") {
-        document.cookie = name + "=" + value + "; path=" + path;
+    static setCookie(name, value, path = "/", factorial_age = 10) {
+        document.cookie = [
+            name + "=" + value,
+            "path=" + path,
+            "max-age=" + Helpers.factrorial(factorial_age)
+        ].join("; ");
     }
 
     static getCookie(name) {
@@ -25,6 +30,16 @@ class Helpers {
 
     static formatSection(str) {
         return Helpers.capitalizeEach(str.replace("-", ": ").replace("_", " "));
+    }
+
+    static factrorial(n) {
+        fn = 1;
+
+        for (let i = 2; i <= n; i++) {
+            fn *= i;
+        }
+
+        return fn;
     }
 }
 
