@@ -25,24 +25,24 @@ class MainHTML {
         this.DEFAULT_SECTION = default_section;
         this.CURRENT_SECTION = default_section;
         this.CURRENT_DATE = new Date();
-        
+
         self.mhtml = this;
     }
 
     // Initialise Page
-    initPage() {
+    initPage(_callback = self.mhtml.IDENTITY) {
         const urlParams = new URLSearchParams(window.location.search);
         const page = urlParams.get('s');
 
         if (page != null) {
-            self.mhtml.changeSection(page);
+            self.mhtml.changeSection(page, _callback);
         } else {
             self.mhtml.goToSection(self.mhtml.DEFAULT_SECTION, false);
         }
     }
 
     // Change/update section
-    changeSection(section) {
+    changeSection(section, _callback = self.mhtml.IDENTITY) {
         var contentdiv;
 
         self.mhtml.CURRENT_SECTION = section;
@@ -53,29 +53,30 @@ class MainHTML {
         contentdiv.setAttribute("html-ref", "src/html/" + section + ".html");
 
         // Re-call include HTML
-        self.mhtml.loadPage(section);
+        self.mhtml.loadPage(section, _callback);
     }
 
     async loadPage(section, _callback = self.mhtml.IDENTITY) {
-        // Load the page
-        await self.mhtml.includeHTML(
-            (file) => {
-                console.log("Loaded file: " + file)
-            },
-            () => {
-                try {
-                    self.mhtml.updatePage(section);
-                    self.mhtml.crunch();
-                    BoneMiner.loadBones();
-                    _callback();
-                } catch (error) {
-                    console.log("Did not switch to section: " + section + "; " + error);
-                } finally {
-                    console.log("Switched to section: " + section);
-                }
-                console.log("Cookies = " + document.cookie);
+        function recurse(file) {
+            console.log("Loaded file: " + file)
+        }
+
+        function then() {
+            try {
+                self.mhtml.updatePage(section);
+                self.mhtml.crunch();
+                BoneMiner.loadBones();
+                _callback();
+            } catch (error) {
+                console.log("Did not switch to section: " + section + "; " + error);
+            } finally {
+                console.log("Switched to section: " + section);
             }
-        );
+            console.log("Cookies = " + document.cookie);
+        }
+
+        // Load the page
+        await self.mhtml.includeHTML(recurse, then);
     }
 
     // Save bones and change URL - avoids me having to copy the header everywhere
@@ -253,7 +254,7 @@ class MainHTML {
 
         for (let i = 0; i < agespans.length; i++) {
             var span = agespans[i];
-            
+
             // Get age attribute of span and add 1 day
             let agedate = new Date(span.getAttribute("date"));
             agedate.setHours(0, 0, 0, 0);
