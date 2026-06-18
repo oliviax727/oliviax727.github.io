@@ -13,6 +13,7 @@ class MainHTML {
     DEFAULT_CRUNCH_SIZE;
     CRUNCH_SIZE;
     DEFAULT_SECTION;
+    CURRENT_SECTION;
 
     // ===== ACTIVE UPDATING ===== //
 
@@ -22,6 +23,7 @@ class MainHTML {
         this.DEFAULT_CRUNCH_SIZE = crunch_size;
         this.CRUNCH_SIZE = crunch_size;
         this.DEFAULT_SECTION = default_section;
+        this.CURRENT_SECTION = default_section;
         this.CURRENT_DATE = new Date();
         
         self.mhtml = this;
@@ -42,6 +44,8 @@ class MainHTML {
     // Change/update section
     changeSection(section) {
         var contentdiv;
+
+        self.mhtml.CURRENT_SECTION = section;
 
         // Get contentdiv, remove internal components, and then add includeHTML attribute
         contentdiv = document.getElementById("content-wrapper");
@@ -216,22 +220,19 @@ class MainHTML {
 
     // Update webpage CSS and span elements
     updatePage(section) {
-        if (section != null) {
-            self.mhtml.updateSectionNames(section);
-            self.mhtml.updateBackgroundColors(section);
-        }
+        let sectionToSwitch = (section == null ? self.mhtml.CURRENT_SECTION : section);
+        self.mhtml.updateSectionNames(sectionToSwitch);
+        self.mhtml.updateBackgroundColors(sectionToSwitch);
         self.mhtml.updateAges();
         self.mhtml.updateCurrentDates();
     }
 
     // Update section names
     updateSectionNames(section) {
-        if (document.querySelector("#sectionname")) {
-            document.getElementById("sectionname").innerHTML = Helpers.formatSection(section);
-        }
+        var sectionNames = document.getElementsByClassName("sectionname");
 
-        if (document.querySelector("#sectionname-menu")) {
-            document.getElementById("sectionname-menu").innerHTML = Helpers.formatSection(section);
+        for (let i = 0; i < sectionNames.length; i++) {
+            sectionNames[i].innerHTML = Helpers.formatSection(section);
         }
     }
 

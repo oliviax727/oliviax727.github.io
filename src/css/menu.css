@@ -14,10 +14,19 @@
 }
 
 #sectionname-menu-wrapper {
+  display: flex;
+  flex-direction: column;
+
   font-weight: bold;
-  padding: 10%;
+  padding: 1em;
   width: 180px;
   box-sizing: border-box;
+}
+
+#sectionname-menu-wrapper span {
+  text-align: left;
+  margin-block: 0.1em;
+  text-wrap: wrap;
 }
 
 #navbar-menu {
