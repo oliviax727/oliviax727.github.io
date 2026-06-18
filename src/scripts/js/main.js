@@ -84,9 +84,11 @@ class MainHTML {
         if (save) {
             BoneMiner.saveBones();
         }
+        const url = new URL(window.location.href);
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const page = urlParams.set('s', section);
+        url.searchParams.set('s', section);
+
+        window.location.search = "?" + url.searchParams.toString();
     }
 
     // ===== TOGGLE FUNCTIONS ===== //
