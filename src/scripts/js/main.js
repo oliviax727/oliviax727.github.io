@@ -84,7 +84,9 @@ class MainHTML {
         if (save) {
             BoneMiner.saveBones();
         }
-        window.location.search = "?s=" + section;
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const page = urlParams.set('s', section);
     }
 
     // ===== TOGGLE FUNCTIONS ===== //
