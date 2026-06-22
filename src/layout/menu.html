@@ -6,25 +6,25 @@
 </head>
 
 <body>
-    <div id="sidebar-ribbon" onmouseleave="mhtml.toggleMenu(false);">
+    <div id="sidebar-ribbon" onmouseleave="Navigator.toggleMenu(false);">
         <div class="menu" id="sectionname-menu-wrapper">
             <span>Section - </span>
             <span class="sectionname"></span>
         </div>
 
         <div class="menu-wrapper" id="navbar-menu">
-            <a onclick="mhtml.goToSection('home');">Home</a>
+            <a onclick="Navigator.goToSection('home');">Home</a>
             <span>About</span>
             <div class="sublist" id="about-sublist">
-                <a onclick="mhtml.goToSection('about-professional');">Professional</a>
-                <a onclick="mhtml.goToSection('about-personal');">Personal</a>
-                <a onclick="mhtml.goToSection('about-political');">Political</a>
+                <a onclick="Navigator.goToSection('about-professional');">Professional</a>
+                <a onclick="Navigator.goToSection('about-personal');">Personal</a>
+                <a onclick="Navigator.goToSection('about-political');">Political</a>
             </div>
-            <a onclick="mhtml.goToSection('works');">Works</a>
-            <a onclick="mhtml.goToSection('curriculum_vitae');">Curriculum Vitae</a>
-            <a onclick="mhtml.goToSection('links');">Links</a>
+            <a onclick="Navigator.goToSection('works');">Works</a>
+            <a onclick="Navigator.goToSection('curriculum_vitae');">Curriculum Vitae</a>
+            <a onclick="Navigator.goToSection('links');">Links</a>
         </div>
     </div>
 
-    <div id="decolourbox" onclick="mhtml.toggleMenu(false);" onmouseenter="mhtml.toggleMenu(false);"></div>
+    <div id="decolourbox" onclick="Navigator.toggleMenu(false);" onmouseenter="Navigator.toggleMenu(false);"></div>
 </body>

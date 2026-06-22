@@ -1,4 +1,4 @@
-import Helpers from "./helpers.js";
+import { Helpers } from "./helpers.js";
 
 class BoneMiner {
 

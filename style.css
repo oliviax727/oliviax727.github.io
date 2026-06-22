@@ -159,13 +159,19 @@ th {
 
 #rss-feed-wrapper {
   overflow-y: scroll;
+  
+  background-color: var(--pale-wash-color);
+
+  max-height: max-content;
   height: 90vh;
   width: 100%;
   min-width: 100%;
+
   border: solid;
   border-color: white;
   border-width: 3px;
   text-align: left;
+
   display: flex;
 }
 

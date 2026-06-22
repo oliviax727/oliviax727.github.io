@@ -3,9 +3,9 @@
 // End-user check JS works
 console.info("This message should appear if the javascript integration has worked.");
 
-import Helpers from './src/scripts/js/helpers.js';
-import MainHTML from './src/scripts/js/main.js';
-import BoneMiner from './src/scripts/js/game.js';
+import { Helpers, PageData } from './src/scripts/lib/helpers.js';
+import { Navigator, Cruncher } from './src/scripts/lib/main.js';
+import BoneMiner from './src/scripts/lib/game.js';
 
 // Constants
 const SECTION_COLOR_DICT = new Map([
@@ -22,10 +22,30 @@ const DEFAULT_CRUNCH_SIZE = 840;
 
 const DEFAULT_SECTION = "home";
 
-let mhtml = new MainHTML(SECTION_COLOR_DICT, DEFAULT_CRUNCH_SIZE, DEFAULT_SECTION);
+// Main HTML functions
 
-window.help = Helpers;
-window.bm = BoneMiner;
+let data = new PageData(DEFAULT_CRUNCH_SIZE, DEFAULT_SECTION, SECTION_COLOR_DICT);
 
-window.onload = () => { mhtml.initPage(); };
-window.onresize = mhtml.crunch;
+window.PageData = data;
+
+window.Navigator = Navigator;
+window.Crunch = Cruncher;
+window.BoneMiner = BoneMiner;
+
+// Activate events
+
+window.onload = () => {
+    Navigator.initPage();
+};
+
+document.addEventListener("oncrunch", () => {
+    Cruncher.onCrunch();
+    Cruncher.crunchRibbon();
+    Cruncher.crunchContent();
+});
+
+document.addEventListener("onrelax", () => {
+    Cruncher.onRelax();
+    Cruncher.relaxRibbon();
+    Cruncher.relaxContent();
+});
