@@ -16,11 +16,12 @@ Normally the website should be fully functional. However sometimes I may acciden
 
 ### Attributions
 
-All icons created by Google, hosted by Flaticon, modified from black to white. See list of Flaticon sets:</p>
+All icons created by Google, hosted by Flaticon, modified from black to white. See list of Flaticon sets:
 
-- [https://www.flaticon.com/free-icons/menu](Menu Icons)
-- [https://www.flaticon.com/free-icons/fullscreen](Fullscreen Icons)
-- [https://www.flaticon.com/free-icons/minimize](Minimise Icons)
-- [https://www.flaticon.com/free-icons/refresh](Refresh Icons)
-- [https://www.flaticon.com/free-icons/rss](RSS Icons)
-- [https://www.flaticon.com/free-icons/page](Home Page icons)
+- [Menu Icons](https://www.flaticon.com/free-icons/menu)
+- [Fullscreen Icons](https://www.flaticon.com/free-icons/fullscreen)
+- [Minimise Icons](https://www.flaticon.com/free-icons/minimize)
+- [Refresh Icons](https://www.flaticon.com/free-icons/refresh)
+- [RSS Icons](https://www.flaticon.com/free-icons/rss)
+- [Home Page icons](https://www.flaticon.com/free-icons/page)
+- [Build Icons](https://www.flaticon.com/free-icons/wrench)
