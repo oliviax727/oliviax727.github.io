@@ -1,4 +1,4 @@
-import { Helpers } from "./helpers.js";
+import { Helpers, Storer } from "./helpers.js";
 
 class BoneMiner {
 
@@ -95,9 +95,9 @@ class BoneMiner {
 
     static loadBones() {
         // Give plenty of gold and bones for levelleing the autominer
-        let level = parseInt(Helpers.getCookie("l"));
-        const bones = parseInt(Helpers.getCookie("b"));
-        const gold = parseInt(Helpers.getCookie("g"));
+        let level = parseInt(Storer.getCookie("l"));
+        const bones = parseInt(Storer.getCookie("b"));
+        const gold = parseInt(Storer.getCookie("g"));
 
         if (isNaN(level)) {
             level = 0;
@@ -134,9 +134,9 @@ class BoneMiner {
         document.getElementById("count-level").innerHTML = 0;
 
         // Reset cookies - doesn't delete them
-        Helpers.setCookie("l", null);
-        Helpers.setCookie("g", null);
-        Helpers.setCookie("b", null);
+        Storer.setCookie("l", null);
+        Storer.setCookie("g", null);
+        Storer.setCookie("b", null);
     }
 
     static saveBones() {
@@ -146,9 +146,9 @@ class BoneMiner {
         let level = document.getElementById("count-level").innerHTML;
 
         // Set cookies
-        Helpers.setCookie("b", bones);
-        Helpers.setCookie("g", gold);
-        Helpers.setCookie("l", level);
+        Storer.setCookie("b", bones);
+        Storer.setCookie("g", gold);
+        Storer.setCookie("l", level);
 
         console.log("Saved bones: b=" + bones + ", g=" + ", l=" + level)
     }

@@ -1,5 +1,5 @@
 import BoneMiner from "./game.js";
-import { Helpers, PageData } from "./helpers.js";
+import { Helpers, PageData, Storer, Retriever } from "./helpers.js";
 
 // Main HTML Class
 export class Navigator {
@@ -8,8 +8,7 @@ export class Navigator {
 
     // Initialise Page
     static initPage(_callback = Helpers.IDENTITY) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const page = urlParams.get('s');
+        const page = Storer.getURLParams('s');
 
         if (page != null) {
             Navigator.changeSection(page, _callback);
@@ -54,7 +53,7 @@ export class Navigator {
         }
 
         // Load the page
-        await Navigator.includeHTML(recurse, then);
+        await Retriever.includeHTML(recurse, then);
     }
 
     // Save bones and change URL - avoids me having to copy the header everywhere
@@ -63,11 +62,8 @@ export class Navigator {
         if (save) {
             BoneMiner.saveBones();
         }
-        const url = new URL(window.location.href);
-
-        url.searchParams.set('s', section);
-
-        window.location.search = "?" + url.searchParams.toString();
+        
+        Storer.setURLParams('s', section, true);
     }
 
     // ===== TOGGLE FUNCTIONS ===== //
@@ -132,7 +128,13 @@ export class Navigator {
 
     // Update ribbon/menu background colors
     static updateBackgroundColors(section) {
-        document.documentElement.style.setProperty('--base-hue', self.PageData.SECTION_COLOR_DICT.get(section));
+        const hue = self.PageData.SECTION_COLOR_DICT.get(section);
+
+        if (hue == undefined) {
+            hue = 300;
+        }
+
+        document.documentElement.style.setProperty('--base-hue', hue);
     }
 
     // Change all age values in spans
@@ -170,66 +172,6 @@ export class Navigator {
 
             span.innerHTML = self.PageData.CURRENT_DATE.toDateString('en-AU');
         }
-    }
-
-    // ===== FILE HANDLING ===== //
-
-    // Read file via XHTTP and use it
-    static readHTML(file, _callback) {
-        // Create an XMLHttpRequest object
-        const xhttp = new XMLHttpRequest();
-
-        // On data retreival
-        xhttp.onreadystatechange = _callback;
-
-        // Send a request
-        xhttp.open("GET", file);
-        xhttp.send();
-        return;
-    }
-
-    // XHTML integration to allow all of the pages to be inserted into eachother (W3 Schools)
-    static includeHTML(_recurse = Helpers.IDENTITY, _then = Helpers.IDENTITY) {
-        var z, i, elmnt, file, xhttp;
-
-        // Loop through a collection of all HTML elements:
-        elmnt = document.querySelector("[html-ref]");
-
-        if (elmnt == null) {
-            _then();
-            return;
-        }
-
-        // search for elements with a certain atrribute:
-        file = elmnt.getAttribute("html-ref");
-
-        function recursive_callback() {
-            if (this.readyState == 4) {
-
-                // Catch errors
-                if (this.status == 200) { elmnt.innerHTML = this.responseText; }
-                else if (this.status == 404) { elmnt.innerHTML = "404 Page not found."; }
-                else {
-                    elmnt.innerHTML =
-                        "There was some unidentified issue stopping the webpage from loading." +
-                        "\nError Status: " + this.status;
-                }
-
-                // Remove the attribute, and call this function once more:
-                elmnt.removeAttribute("html-ref");
-
-                // XHTTP doesn't like async/await, so just do it every time the XHTTP is loaded
-                _recurse(file);
-
-                // Recursive call
-                Navigator.includeHTML(_recurse, _then);
-            }
-        }
-
-        Navigator.readHTML(file, recursive_callback);
-
-        // Exit the function:
-        return;
     }
 }
 
