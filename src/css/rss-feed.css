@@ -1,0 +1,139 @@
+/* RSS Feed Div */
+
+/* Navbar */
+
+.feed-navbar {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  left: 0;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  width: inherit;
+  overflow: hidden;
+
+  min-height: max-content;
+  max-height: 100%;
+  min-width: 100%;
+
+  background-color: var(--vibrant-dark-color);
+
+  border: solid;
+  border-color: white;
+  border-width: 1px;
+}
+
+.feed-navbar-item {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: inherit;
+  height: 100%;
+  min-width: max-content;
+
+  padding-inline: 1%;
+}
+
+.feed-navbar-item * {
+  margin-inline: 1%;
+  min-width: max-content;
+}
+
+.feed-navbar .sectionname {
+  font-weight: normal;
+  width: initial;
+  min-width: initial;
+  display: initial;
+  width: initial;
+  float: initial;
+  justify-content: initial;
+  text-align: initial;
+  padding: initial;
+}
+
+.feed-navbar-left {
+  justify-content: left;
+  float: left;
+  width: 33%;
+}
+
+.feed-navbar-right {
+  justify-content: right;
+  float: right;
+  width: 66%;
+}
+
+.feed-navbar img {
+  vertical-align: middle;
+  object-fit: cover;
+  max-width: 22px;
+  max-height: 22px;
+}
+
+/* Content List */
+
+.feed-content {
+  display: block;
+  padding: 3%;
+  background-color: var(--pale-wash-color);
+  height: fit-content;
+}
+
+/* Feed Item */
+
+.news-item {
+  display: inline-flex;
+  max-height: max-content;
+  min-height: max-content;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 3%;
+  background-color: var(--pale-dark-color);
+  border: solid;
+  border-color: black;
+  border-width: 3px;
+
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.item-inline {
+  display: inline-flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-self: stretch;
+
+  padding-inline: 2%;
+}
+
+.item-link {
+  vertical-align: middle;
+}
+
+.item-cell {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  text-align: justify;
+  margin-block: 1em;
+  max-width: 13ch;
+  min-width: 13ch;
+}
+
+.item-image {
+  vertical-align: middle;
+  object-fit: cover;
+  min-height: 13ch;
+  max-height: 13ch;
+}
+
+.item-content {
+  display: table-cell;
+  text-align: left;
+}

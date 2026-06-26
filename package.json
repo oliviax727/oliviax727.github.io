@@ -1,0 +1,38 @@
+{
+	"type": "module",
+	"dependencies": {
+		"@types/file-saver": "^2.0.7",
+		"@types/node": "^26.0.0",
+		"@types/rss": "^0.0.32",
+		"file-saver": "^2.0.5",
+		"fs": "^0.0.1-security",
+		"npm2url": "^0.2.4",
+		"rss": "^1.2.2",
+		"rss-parser": "^3.13.0",
+		"test-import": "^1.0.0",
+		"uuid": "^14.0.0"
+	},
+	"devDependencies": {
+		"@babel/cli": "^8.0.1",
+		"@babel/core": "^8.0.1",
+		"@babel/plugin-transform-class-properties": "^8.0.1",
+		"@babel/plugin-transform-modules-commonjs": "^8.0.1",
+		"@babel/preset-env": "^8.0.2",
+		"@eslint/js": "^10.0.1",
+		"@html-eslint/eslint-plugin": "^0.62.0",
+		"@html-eslint/parser": "^0.62.0",
+		"browserify": "^17.0.1",
+		"eslint": "^10.5.0",
+		"eslint-plugin-functional": "^10.0.0",
+		"fp-ts": "^2.16.11",
+		"globals": "^17.7.0",
+		"jiti": "^2.7.0",
+		"terser": "^5.48.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.61.1"
+	},
+	"allowScripts": {
+		"fsevents@2.3.3": true
+	}
+}
