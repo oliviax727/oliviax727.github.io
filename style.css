@@ -13,23 +13,23 @@
 
   /* High-Saturation Colours */
   --vibrant-dark-color:  hsl(var(--base-hue), 100%, 25%);
-  --vibrant-light-color: hsl(var(--base-hue), 100%, 50%);
-  --vibrant-wash-color:  hsl(var(--base-hue), 100%, 75%);
+  --vibrant-mid-color: hsl(var(--base-hue), 100%, 50%);
+  --vibrant-light-color:  hsl(var(--base-hue), 100%, 75%);
 
   /* Moderate-Saturation Colours */
   --mid-dark-color:  hsl(var(--base-hue), 50%, 25%);
-  --mid-light-color: hsl(var(--base-hue), 50%, 50%);
-  --mid-wash-color:  hsl(var(--base-hue), 50%, 75%);
+  --mid-mid-color: hsl(var(--base-hue), 50%, 50%);
+  --mid-light-color:  hsl(var(--base-hue), 50%, 75%);
 
   /* Low Saturation Colours */
   --pale-dark-color:  hsl(var(--base-hue), 25%, 25%);
-  --pale-light-color: hsl(var(--base-hue), 25%, 50%);
-  --pale-wash-color:  hsl(var(--base-hue), 25%, 75%);
+  --pale-mid-color: hsl(var(--base-hue), 25%, 50%);
+  --pale-light-color:  hsl(var(--base-hue), 25%, 75%);
 
   /* Greyscale */
-  --dark-gray:   #444;
+  --dark-gray:   #333;
   --mid-gray:    #666;
-  --light-gray:  #DDD;
+  --light-gray:  #999;
 }
 
 /* Main Setup */
@@ -42,13 +42,13 @@ body {
   overflow-wrap: break-word;
   word-wrap: break-word;
   position: relative;
-  user-select: 'text'
+  user-select: 'text';
 }
 
 /* Da Linkys */
 
 a:link {
-  color: var(--mid-light-color);
+  color: var(--mid-mid-color);
 }
 
 a:visited {
@@ -56,7 +56,7 @@ a:visited {
 }
 
 a:active {
-  color: var(--mid-wash-color);
+  color: var(--mid-light-color);
 }
 
 button {
@@ -160,7 +160,7 @@ th {
 #rss-feed-wrapper {
   overflow-y: scroll;
   
-  background-color: var(--pale-wash-color);
+  background-color: var(--pale-light-color);
 
   max-height: max-content;
   height: 90vh;

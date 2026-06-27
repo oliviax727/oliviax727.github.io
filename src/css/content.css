@@ -29,3 +29,7 @@
   border-left-color: white;
   border-left-width: 1px;
 }
+
+img {
+  max-width: 100%;
+}

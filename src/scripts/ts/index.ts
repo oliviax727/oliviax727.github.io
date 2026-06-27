@@ -3,7 +3,7 @@
 import * as T from "fp-ts/Task";
 import * as Console from "fp-ts/Console";
 import { decideUnsafe, type EntryFunction, type OutputFunction } from './default-modules';
-import { loadXML } from "./rss-modules";
+import { loadXML } from "./rss-modules.js";
 
 const getRSS: OutputFunction = async function () {
 	const feed = await decideUnsafe(

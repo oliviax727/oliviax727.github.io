@@ -7,9 +7,16 @@ import html from "@html-eslint/eslint-plugin";
 import globals from "globals";
 
 // Files that should ALWAYS be ignored (as they are automatically generated)
-const universalIgnores = ["src/scripts/dist/**", "src/scripts/app/**", "src/scripts/types/**", "bundle.js"];
+const universalIgnores = [
+	"src/scripts/dist/**",
+	"src/scripts/app/**",
+	"src/scripts/types/**",
+	"node_modules/*",
+	"**/*.config*",
+	"bundle.js"
+];
 
-const globalIgnoreConfig = {
+const globalIgnoresConfig = {
 	ignores: universalIgnores,
 } as Config;
 
@@ -43,7 +50,10 @@ const browserOnlyConfig = {
 	files: ["**/*.js"],
 	ignores: universalIgnores,
 	plugins: { js, html },
-	extends: [js.configs.recommended, html.configs.recommended],
+	extends: [
+		js.configs.recommended,
+		html.configs.recommended,
+	],
 	languageOptions: {
 		globals: globals.browser,
 		parserOptions: {
@@ -55,10 +65,11 @@ const browserOnlyConfig = {
 
 // Configure typescript backend modules
 const moduleOnlyConfig = {
-	files: ["src/scripts/**/*.ts"],
-	ignores: ["src/scripts/**/index.ts", ...universalIgnores],
-	plugins: { functional },
+	files: ["src/scripts/**/*-{modules,module}.ts"],
+	ignores: universalIgnores,
+	plugins: { js, functional },
 	extends: [
+		js.configs.recommended,
 		functional.configs.recommended,
 		functional.configs.stylistic,
 		functional.configs.externalVanillaRecommended,
@@ -76,6 +87,12 @@ const moduleOnlyConfig = {
 const entryConfig = {
 	files: ["src/scripts/entry.js", "src/scripts/**/index.ts"],
 	ignores: universalIgnores,
+	plugins: { functional },
+	extends: [
+		functional.configs.lite,
+		functional.configs.stylistic,
+		functional.configs.externalVanillaRecommended,
+	],
 	languageOptions: {
 		parserOptions: {
 			sourceType: "module",
@@ -85,4 +102,4 @@ const entryConfig = {
 	rules: defaultRules,
 } as Config;
 
-export default defineConfig([globalIgnoreConfig, nodeOnlyConfig, browserOnlyConfig, moduleOnlyConfig, entryConfig]);
+export default defineConfig([globalIgnoresConfig, nodeOnlyConfig, browserOnlyConfig, moduleOnlyConfig, entryConfig]);

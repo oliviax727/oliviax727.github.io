@@ -78,7 +78,7 @@
 .feed-content {
   display: block;
   padding: 3%;
-  background-color: var(--pale-wash-color);
+  background-color: var(--pale-light-color);
   height: fit-content;
 }
 

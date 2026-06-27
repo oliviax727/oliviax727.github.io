@@ -1,6 +1,6 @@
 /// <reference types="node" />
 
-import { _stub, _id, HTTPS404 } from "./default-modules";
+import { _stub, _id, HTTPS404 } from "./default-modules.js";
 import Parser from "rss-parser";
 import type { TaskEither } from "fp-ts/TaskEither";
 import * as TE from "fp-ts/TaskEither";

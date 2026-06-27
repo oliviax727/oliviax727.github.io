@@ -107,6 +107,7 @@ export class Retriever {
 		// search for elements with a certain atrribute:
 		let file = elmnt.getAttribute("html-ref");
 
+		// Recursively call this function after every XHTTP request
 		function recursive_callback() {
 			if (this.readyState == 4) {
 

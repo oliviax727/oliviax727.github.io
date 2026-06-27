@@ -1,4 +1,5 @@
-User-agent: googlebot
-User-agent: bingbot
-User-agent: DuckDuckBot
+User-Agent: *
+Content-Signal: search=yes, ai-input=no, ai-train=no
+Content-Usage: ai=n
+DisallowAITraining: /
 Allow: /

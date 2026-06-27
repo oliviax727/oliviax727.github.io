@@ -1,11 +1,15 @@
 {
     "include": [
-        "./src/scripts/ts/*"
+        "src/scripts/**/*.ts"
     ],
     "exclude": [
         "node_modules",
-        "./*.ts",
-        "./src/scripts/lib/*",
+        "src/scripts/app/*",
+        "src/scripts/dist/*",
+        "src/scripts/lib/*",
+        "src/scripts/types/*",
+        "**/*.js",
+        "**/*.d.ts",
     ],
 
     // Visit https://aka.ms/tsconfig to read more about this file
