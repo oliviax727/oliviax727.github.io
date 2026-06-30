@@ -47,7 +47,7 @@ body {
 
 /* Da Linkys */
 
-a:link {
+a:link a:visited {
   color: var(--mid-mid-color);
 }
 
