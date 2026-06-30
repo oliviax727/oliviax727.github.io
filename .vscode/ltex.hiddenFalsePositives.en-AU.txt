@@ -1,0 +1,13 @@
+{"rule":"GITHUB","sentence":"^\\QGive GitHub a few minutes to deploy, and then access the website via https://your username.github.io/your repository name/ or https://your username.github.io if the repository is called “your username.github.io”\\E$"}
+{"rule":"GITHUB","sentence":"^\\QGive GitHub a few minutes to deploy, and then access the website via https://your username.github.io/your repository name/ or https://your username.github.io if the repository is called “your username.github.io”.\\E$"}
+{"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QThis repository's documentation can be found in the markdown files in the docs folder.\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QThanks to , the\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QThanks to , w markdown is\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QThanks to , embedding markdown in HTML i\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QThanks to , embedding markdown in HTML is very simple\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QThanks to , embedding markdown in HTML is very simple and is used throughout this website.\\E$"}
+{"rule":"EN_UNPAIRED_QUOTES","sentence":"^\\QAdditionally, I want to protect any artists (including myself) from having their IP stolen — not because I don't think what they produce shouldn't be used in the reciprocal creativity of art — but to make sure they get their fair share in an economic system that is “produce or die\"/\"publish or perish\"\\E$"}
+{"rule":"PUNCTUATION_PARAGRAPH_END","sentence":"^\\QW3 Schools\\E$"}
+{"rule":"EN_UNPAIRED_QUOTES","sentence":"^\\QBut generally speaking, this is why it's so useful to program in websites - the assurance that \"it just works\" and \"everything is there” is extremely helpful.\\E$"}
+{"rule":"HELL","sentence":"^\\QHere are some of my personal projects and websites that I think you should take a look at, especially if you want an example of how to use this repository to its fullest extent, see my:\nHomepage and its README\nRSS Newsreader and its README\nCustom Bash-RC Shell Project\nMy github\\E$"}
+{"rule":"HELL","sentence":"^\\QHere are some of my personal projects and websites that I think you should take a look at, especially if you want an example of how to use this repository to its fullest extent, see my:\nHomepage and its README\nRSS Newsreader and its README\nCustom Bash-RC Shell Project\nGitHub Profile\\E$"}

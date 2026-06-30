@@ -1,0 +1,32 @@
+{
+	"eslint.useWorkspaceDependencies": true,
+	"eslint.workingDirectories": [
+		{ "mode": "auto" }
+	],
+	"eslint.options": {
+		"overrideConfigFile": "eslint.config.ts"
+	},
+	"editor.detectIndentation": false,
+	"editor.insertSpaces": false,
+	"editor.tabSize": 4,
+	"eslint.format.enable": true,
+	"prettier.requireConfig": true,
+	"prettier.useTabs": true,
+	"prettier.tabWidth": 4,
+	"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+	"[javascript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	}
+}

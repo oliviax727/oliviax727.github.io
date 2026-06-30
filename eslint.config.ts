@@ -5,6 +5,7 @@ import type { Linter } from "eslint";
 import functional from "eslint-plugin-functional";
 import html from "@html-eslint/eslint-plugin";
 import globals from "globals";
+import prettier from "eslint-plugin-prettier/recommended"
 
 // Files that should ALWAYS be ignored (as they are automatically generated)
 const universalIgnores = [
@@ -25,6 +26,13 @@ const defaultRules: Linter.RulesRecord = {
 	semi: [1, "always"],
 };
 
+const globalConfig = {
+	files: [ "**/*.js", "**/.ts" ],
+	ignores: universalIgnores,
+	extends: [ prettier ],
+	rules: defaultRules
+} as Config
+
 // Configure node-only files
 const nodeOnlyConfig = {
 	files: ["src/scripts/**/*.ts"],
@@ -34,7 +42,7 @@ const nodeOnlyConfig = {
 		js.configs.recommended,
 		tseslint.configs.recommendedTypeChecked,
 		tseslint.configs.strictTypeChecked,
-		tseslint.configs.stylisticTypeChecked,
+		tseslint.configs.stylisticTypeChecked
 	],
 	languageOptions: {
 		globals: globals.node,
@@ -102,4 +110,4 @@ const entryConfig = {
 	rules: defaultRules,
 } as Config;
 
-export default defineConfig([globalIgnoresConfig, nodeOnlyConfig, browserOnlyConfig, moduleOnlyConfig, entryConfig]);
+export default defineConfig([globalIgnoresConfig, globalConfig, nodeOnlyConfig, browserOnlyConfig, moduleOnlyConfig, entryConfig]);

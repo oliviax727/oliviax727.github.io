@@ -1,5 +1,4 @@
 export class Helpers {
-
 	static IDENTITY = () => {};
 
 	// ===== HANDY FUNCTIONS ===== //
@@ -46,17 +45,17 @@ export class Storer {
 		document.cookie = [
 			name + "=" + value,
 			"path=" + path,
-			"max-age=" + Helpers.factrorial(factorial_age)
+			"max-age=" + Helpers.factrorial(factorial_age),
 		].join("; ");
 	}
 
 	static getCookie(name) {
 		const value = `; ${document.cookie}`;
 		const parts = value.split(`; ${name}=`);
-		return parts.pop().split(';').shift();
+		return parts.pop().split(";").shift();
 	}
 
-	static setURLParams(name, value, navigate=true) {
+	static setURLParams(name, value, navigate = true) {
 		const url = new URL(window.location.href);
 
 		url.searchParams.set(name, value);
@@ -64,7 +63,7 @@ export class Storer {
 		if (navigate) {
 			window.location.href = url.toString();
 		} else {
-			window.history.pushState(null, '', url.toString());
+			window.history.pushState(null, "", url.toString());
 		}
 	}
 
@@ -77,7 +76,6 @@ export class Storer {
 }
 
 export class Retriever {
-	
 	// ===== FILE HANDLING ===== //
 
 	// Read file via XHTTP and use it
@@ -110,14 +108,16 @@ export class Retriever {
 		// Recursively call this function after every XHTTP request
 		function recursive_callback() {
 			if (this.readyState == 4) {
-
 				// Catch errors
-				if (this.status == 200) { elmnt.innerHTML = this.responseText; }
-				else if (this.status == 404) { elmnt.innerHTML = "404 Page not found."; }
-				else {
+				if (this.status == 200) {
+					elmnt.innerHTML = this.responseText;
+				} else if (this.status == 404) {
+					elmnt.innerHTML = "404 Page not found.";
+				} else {
 					elmnt.innerHTML =
 						"There was some unidentified issue stopping the webpage from loading." +
-						"\nError Status: " + this.status;
+						"\nError Status: " +
+						this.status;
 				}
 
 				// Remove the attribute, and call this function once more:
@@ -151,5 +151,85 @@ export class PageData {
 		this.DEFAULT_SECTION = this.CURRENT_SECTION = section;
 		this.SECTION_COLOR_DICT = section_color_dict;
 		this.CURRENT_DATE = new Date();
+	}
+}
+
+/**
+ * Most Base 64 encoders include header information that make compression pointless.
+ * This class encodes STRINGS ONLY JSON into something more compact for URI/cookie storage.
+ */
+export class Encoder {
+	static ENCODING = new Map([
+		["[", "@"],
+		["]", "."],
+		["{", "("],
+		["}", ")"],
+	]);
+
+	// URL-friendly parameters (".", ",", ":" and "" is for JSON object encoding)
+	static encodeBase64JSON(obj) {
+		let jstr = JSON.stringify(obj).replaceAll('"', "");
+
+		Encoder.ENCODING.forEach((val, key) => {
+			jstr = jstr.replaceAll(key, val);
+		});
+
+		return jstr;
+	}
+
+	static decodeBase64JSON(str) {
+		const wordEncoder = /(?<=[(:@,])([a-zA-z0-9\-_]*)(?=[).:,])/g;
+
+		let jstr = str.replaceAll(wordEncoder, '"$1"');
+
+		Encoder.ENCODING.forEach((val, key) => {
+			jstr = jstr.replaceAll(val, key);
+		});
+
+		return JSON.parse(jstr);
+	}
+
+	static encodeEntryDataMap(entryData) {
+		let dataArray = [];
+
+		entryData.forEach((val, key) => {
+			if (val != undefined && key != undefined) {
+				dataArray = [
+					...dataArray,
+					JSON.parse(
+						`[ "${key}", "${Encoder.combineBools([val.read, val.dismissed])}" ]`,
+					),
+				];
+			}
+		});
+
+		return Encoder.encodeBase64JSON(dataArray);
+	}
+
+	static decodeEntryDataMap(entryDataStr) {
+		const protoMap = Encoder.decodeBase64JSON(entryDataStr);
+
+		return new Map(
+			protoMap.map(([key, val]) => {
+				const unBool = Encoder.decombineBools(val);
+				console.log(unBool);
+				return [key, { read: unBool[0], dismissed: unBool[1] }];
+			}),
+		);
+	}
+
+	static combineBools(bools) {
+		return parseInt(
+			bools.reduce((acc, val) => acc + +val, ""),
+			2,
+		);
+	}
+
+	static decombineBools(num, len = 2) {
+		return (num >>> 0)
+			.toString(2)
+			.padStart(len, "0")
+			.split("")
+			.map((i) => i === "1");
 	}
 }
