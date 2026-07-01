@@ -11,3 +11,4 @@
 {"rule":"EN_UNPAIRED_QUOTES","sentence":"^\\QBut generally speaking, this is why it's so useful to program in websites - the assurance that \"it just works\" and \"everything is there” is extremely helpful.\\E$"}
 {"rule":"HELL","sentence":"^\\QHere are some of my personal projects and websites that I think you should take a look at, especially if you want an example of how to use this repository to its fullest extent, see my:\nHomepage and its README\nRSS Newsreader and its README\nCustom Bash-RC Shell Project\nMy github\\E$"}
 {"rule":"HELL","sentence":"^\\QHere are some of my personal projects and websites that I think you should take a look at, especially if you want an example of how to use this repository to its fullest extent, see my:\nHomepage and its README\nRSS Newsreader and its README\nCustom Bash-RC Shell Project\nGitHub Profile\\E$"}
+{"rule":"PUNCTUATION_PARAGRAPH_END","sentence":"^\\QSchool\\E$"}

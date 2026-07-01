@@ -1,10 +1,10 @@
-## oliviax727.github.io
+# oliviax727.github.io
 
 My very own website.
 
 https://oliviax727.github.io
 
-### About this webpage
+## About this webpage
 
 This website's purpose is primarily for both personal and professional use. To store my important academic works and history, but also to show the world who I am. Feel free to browse around!
 
@@ -14,7 +14,7 @@ Also note that I routinely will orphan this repository for security reasons.
 
 Normally the website should be fully functional. However sometimes I may accidentally push a breaking change. If that happens, feel free to let me know. Though, if it's enough to stop the whole site from functioning, usually I will find out about it on my own and fix it. So if you see a breaking change, then wait a few hours and see if it's still there.
 
-### Attributions
+## Attributions
 
 All icons created by Google, from the [Google Material Design Monochrome](https://www.flaticon.com/authors/google-material-design/monochrome) icon pack, hosted by Flaticon, modified from black to white. See list of Flaticon attributions:
 
@@ -26,7 +26,7 @@ All icons created by Google, from the [Google Material Design Monochrome](https:
 - [Home Page icons](https://www.flaticon.com/free-icons/page)
 - [Build Icons](https://www.flaticon.com/free-icons/wrench)
 
-### Copyright
+## Copyright
 
 I am fundamentally opposed to copyright and any restriction on the free exchange of information and ideas. Unfortunately we do not live in a world where we can make everything public domain.
 
