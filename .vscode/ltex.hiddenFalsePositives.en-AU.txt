@@ -12,3 +12,5 @@
 {"rule":"HELL","sentence":"^\\QHere are some of my personal projects and websites that I think you should take a look at, especially if you want an example of how to use this repository to its fullest extent, see my:\nHomepage and its README\nRSS Newsreader and its README\nCustom Bash-RC Shell Project\nMy github\\E$"}
 {"rule":"HELL","sentence":"^\\QHere are some of my personal projects and websites that I think you should take a look at, especially if you want an example of how to use this repository to its fullest extent, see my:\nHomepage and its README\nRSS Newsreader and its README\nCustom Bash-RC Shell Project\nGitHub Profile\\E$"}
 {"rule":"PUNCTUATION_PARAGRAPH_END","sentence":"^\\QSchool\\E$"}
+{"rule":"PUNCTUATION_PARAGRAPH_END","sentence":"^\\QBy Albert Einstein\\E$"}
+{"rule":"PUNCTUATION_PARAGRAPH_END","sentence":"^\\QDemocratic Confederalism by Abdullah Öcalan\\E$"}
