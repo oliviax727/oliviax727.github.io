@@ -144,15 +144,63 @@ For centuries, the west has relied on the exploitation of the global south. What
 
 Corporations do not care about social good. If they had their way, and they do, they would prefer a society built around making profits increase. What we see in post-Soviet nations is exactly the direction we are heading: techno-fascism.
 
-The only remedy to this is to build a society that actually cares for its people, and to
+The only remedy to this is to build a society that actually cares for its people, and to fight authoritarian and regressive mentalities, right down to purging yourself of them.
+
+The reactionary mind is one that is animalistic – it is built on fear, insecurity, selfishness, and apathy. It happens to be that reactionary thinking is just bad thinking in-general, being fundamentally uncurious, simplistic, and obsessed with revenge. Everything about my ideology is built in an attempt to oppose fascism – even if I am not perfect at it.
+
+We see the failures of modern society to oppose fascism most notably with the ongoing genocide of Palestinians, being supported by a dark triad of interests from the military industrial complex, corporate profit and greed, and fundamentalist christianity/judaism.
 
 ### Animal Rights and Environmentalism
 
+I often call myself an Eco-Anarchist as well as an ancom. As the climate crisis becomes even more urgent and as I have evolved politically I have come to realise how our relationship with nature is a microcosm for everything else in our world.
+
+Our anthropocentric view of the world is one built on imperialism and capitalism. It cares only for the rights of private property and extraction. It sees nature as something to overcome, to get rid of, to conquer. The truth is that the earth does not belong to us – we belong to the earth – and we should start acting that way as well.
+
+I also happen to care deeply for animal welfare. I am a vegetarian who switched on the basis that eating meat is unethical. While I am not necessarily the biggest “animal-lover” in that I have a neutral favourability on them. I certainly think they should be treated with respect, dignity, and rights.
+
+### Technology and Transhumanism
+
+I also consider myself a transhumanist. You may think that this is contrary to naturalism. But I think that technology and nature can harmonise with each-other. The physical world itself is natural too, and technology ultimately is just a rearrangement of the stuff that makes our world up.
+
+The goal of technological development should not be to overpower nature, but to enhance it. We can have our cake and eat it too. It is only because of capital and colonialism's obsession with destruction that we have built all of our technology to mess with our human nature.
+
+Part of this website is my attempt to make a statement against the ongoing enshittification of the internet. It is to demonstrate that technology, when used correctly, can make our lives better, as long as it is made for all.
+
 ### Radical Empathy and Reformative Justice
+
+One of my core foundational beliefs is in radical reformism. I think that, no matter how far you have fallen, no matter how severe your crime, you have the right to a second chance. That there is no such thing as an unforgivable crime, and that even the most evil of people can change.
+
+People do not commit crimes for no reason – often people do it because they make mistakes, because they have been themselves victimised, that they have been compelled to act by a system, that they have lacked access to help. The chance that someone, having destroyed or ended someone else's life, could never be reformed, is simply too small to concern ourselves with.
+
+One of the core reasons why our justice system in the first place is so messed up is because of the mentality that incarceration, punishment, somehow will right a wrong. That by forcing someone into a cell, permanently labelling them as evil, and being okay with their torture or the restriction of their freedoms – that we are somehow balancing some imagined cosmic scale.
+
+I see no need to pretend that giving someone what they “deserve” will do any good. Once a morally heinous act has been committed no amount of penance can undo what happened. The best thing to consider is the effects the consequences will have on the broader system. And all prison does is perpetuate the cycle of abuse, again and again, with no end in sight.
+
+This mentality is only achievable through radical empathy, that being, feeling empathy for *everybody*, no matter who they are and no matter what they have done. To truly enact justice on someone you must first understand why they did it, and then try to see if you can prevent it from happening again.
+
+This isn't to say that we should give abuses a free pass. But more that an actually just and functional justice system would seek reconciliation in all individuals. And for those individuals themselves, victim or perpetrator or both or neither, giving them the tools to improve their lives and others, and a path towards acceptance and reparation.
+
+This of course extends to the policing system. Which as well should be abolished. The police serve no other function than to enact the state's will.
+
+Of course, this ignores the inevitable fact that political violence is otherwise necessary. But in the rare cases where it is, said violence should be focused and targeted. We should only use violence as a means to prevent active harm – self-defence is sometimes a necessity.
 
 ### Feminism, Queer Rights, and Sexual liberation
 
+One of the biggest realisations I made that started me on the path of progressivism was seeing the world of gender for what it is. Gender kinda sucks, and we are far too dependent on it as a society.
+
+It is only in defeating heteronormativity, cisnormativity, and the patriarchy that we can truly free ourselves from restrictions over gender. A society built on consent and respect for individual autonomy would necessarily require emancipation.
+
+Of course, I consider myself a feminist, and I believe strongly that the emancipation of women is necessary and sufficient for the emancipation of all minorities.
+
+Gender is inherently tied to the world of sexual politics, and our world uses shame, harassment, and fear to control our lives. I do believe that in general humans are a weakly polygamous species and that a society liberated from gender would be one in which love is free and always consensual.
+
 ### Anti-Racism and Indigenous Sovereignty
+
+Australia as a country is an imperialist regime, and no matter how much is one built on extraction. A society which respects the sovereignty of indigenous people is one which seeks to properly embrace multiculturalism, and has respect for the land, and their traditional owners.
+
+Indigenous society has existed on this continent for millennia. In this long and storied history it has developed a remarkable relationship to its country that emphasises both environmentalism and flat hierarchy. Like most “uncivilised” societies (i.e. societies which are usually more civilised due to their approach to equality and cooperation), pre-colonial Australia, while imperfect, had a much better model for human interaction with the environment and each other — by sheer fact of length of existence.
+
+Multiculturalism is also awesome. Diversity happens to be one of our most powerful tools in improving society. We should embrace it, along with immigration, instead of rejecting it.
 
 ## Religion and Education
 
