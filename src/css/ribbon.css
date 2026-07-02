@@ -79,3 +79,16 @@
 #main-ribbon {
   width: 55%;
 }
+
+.secnameribbon {
+  font-weight: bold;
+  width: 22%;
+  min-width: 22%;
+  text-align: right;
+  display: block;
+  width: auto;
+  float: right;
+  justify-content: right;
+  text-align: right;
+  padding: 1%;
+}
