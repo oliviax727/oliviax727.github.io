@@ -87,4 +87,6 @@ a:active {
 
 ### Other Interests
 
+- DIY flags
+- Clubs
 

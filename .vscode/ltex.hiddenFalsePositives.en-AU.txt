@@ -14,3 +14,4 @@
 {"rule":"PUNCTUATION_PARAGRAPH_END","sentence":"^\\QSchool\\E$"}
 {"rule":"PUNCTUATION_PARAGRAPH_END","sentence":"^\\QBy Albert Einstein\\E$"}
 {"rule":"PUNCTUATION_PARAGRAPH_END","sentence":"^\\QDemocratic Confederalism by Abdullah Öcalan\\E$"}
+{"rule":"TOO_LONG_SENTENCE","sentence":"^\\QThis model of education and pastoral care seeks to centre the experience of the children (or adults) being educated, using a curriculum designed by a consensus of experts in the relevant field and pedagogy, is done in a commune-first manner, and is built on consistent, regular standards.\\E$"}

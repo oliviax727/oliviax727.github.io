@@ -1,48 +1,3 @@
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,700&display=swap');
-
-:root {
-  /* Base Colour */
-  --base-hue: 300;
-
-  /* High-Saturation Colours */
-  --vibrant-dark-color:  hsl(var(--base-hue), 100%, 25%);
-  --vibrant-mid-color: hsl(var(--base-hue), 100%, 50%);
-  --vibrant-light-color:  hsl(var(--base-hue), 100%, 75%);
-
-  /* Moderate-Saturation Colours */
-  --mid-dark-color:  hsl(var(--base-hue), 50%, 25%);
-  --mid-mid-color: hsl(var(--base-hue), 50%, 50%);
-  --mid-light-color:  hsl(var(--base-hue), 50%, 75%);
-
-  /* Low Saturation Colours */
-  --pale-dark-color:  hsl(var(--base-hue), 25%, 25%);
-  --pale-mid-color: hsl(var(--base-hue), 25%, 50%);
-  --pale-light-color:  hsl(var(--base-hue), 25%, 75%);
-
-  /* Greyscale */
-  --dark-gray:   #333;
-  --mid-gray:    #666;
-  --light-gray:  #999;
-}
-
-body {
-	background-color: var(--dark-gray);
-	font-family: "Open Sans", Verdana, Geneva, Tahoma, sans-serif;
-}
-
-a:link a:visited {
-  color: var(--mid-mid-color);
-}
-
-a:active {
-  color: var(--mid-light-color);
-}
-</style>
-
 # My Politics
 
 ## Leftism
@@ -206,25 +161,104 @@ Multiculturalism is also awesome. Diversity happens to be one of our most powerf
 
 ### Agnostic-Atheism
 
-### Satanism and Anti-Theism
+I am an agnostic atheist. Agnostic-atheism is a sub-variety of atheism, and the most common form of atheism, in which it agrees with the sentiment that there is no evidence for a god.
+
+Agnostic-atheism takes this further by using [Alder's razor (a.k.a. Newton's flaming laser sword](https://en.wikipedia.org/wiki/Mike_Alder#Newton's_flaming_laser_sword), no really that's the name). It states that because supernatural phenomena are, at best, unfalsifiable, that it is not worthy of debate, as it is not cognitively meaningful.
+
+Furthermore, due to Occam's razor, or an extension of the “not worthy of debate” element, it is logically better that we do not believe in the existence of the supernatural. As it requires additional assumptions about the nature of reality or requires attention or focus on something fundamentally not worth considering. 
+
+### Anti-Theism
+
+We can take this statement of agnostic-atheism and draw an even further conclusion: that religion (or any positive belief in the spiritual/supernatural) is fundamentally or necessarily harmful. From an anarchist perspective organised religion is already problematic due to its promotion of hierarchical structure, which can extend to any notion of “expertise” or divinity. But furthermore, it is harmful from a standpoint that it introduces additional assumptions about reality, assumptions that cannot be verified or justified. Thus, supernatural beliefs can hijack logical and evidence-based beliefs including morality in a manner that makes it impenetrable to deconstruction.
+
+I have come across this experience all too often. Where when trying to argue with someone, I simply cannot convince them of an evidence-based fact. Not because I myself am wrong, but because their religious/spiritual belief acts to block any intellectualisation on that particular subject. It's the equivalent of playing the Socratic method but instead of reaching a point of personal consideration of one's foundational beliefs, they simply say “it just is”. I find this anti-intellectual thought as dangerous.
+
+I ruthlessly attempt to purge myself and others of beliefs that are unjustified, choosing to question everything, leaving no stone unturned. Any lingering “it just is” mentality can be used by bad actors to control you and turn you against your fellow man and reason itself. Religion and other similar forms of doxastic anxiety prevent. 
+
+### Satanism
+
+Satanism is the logical extent of this ideology. Satanism is not religious, instead satanism is a western pseudo-religion that idealises the cultural conception of “The Satan”, or “The Adversary” in Hebrew. And it is just that – Satanism seeks to forever be an enemy to the cultural and political institution of religion, with the eventual goal of dismantling it entirely. It sees the biblical description of Lucifer as one inspired by *Paradise Lost* – someone who betrayed his master for the greater good. A Promethean attempt to give humanity the ability to think, to know, and to choose, to free themselves from eternal subservience to a god.
+
+This powerful assertion applies even in a world where god does not exist. As satanism sees the very conception of god (or the supernatural), as an opiate to suppress independence.
+
+Religious freedom is often used by Satanism disingenuously to expose the hypocrisy of dominant religions, and the inherent interaction between church and state. Satanism agrees with the Marxist notion that religion is the “opiate of the masses” – which is part of what makes it harmful.
+
+### Optimistic Nihilism
+
+Without a broader meaning to existence or after-life, it may seem that “anything goes” or “nothing matters” – this belief is alternatively known as cosmic nihilism.
+
+Optimistic nihilism is a more mature form of nihilism which emphasises that because there is no great meaning to life, that you are free to make your own meaning. Morality, in this case, while ultimately a social construct, is one that can be founded in a combination of empathy, logic, and evidence. We do not like suffering, and so for both ourselves and others it is best that we reduce it as much as possible.
 
 ### Transparency and Honesty
 
+In addition to this I am an advocate for radical honesty and transparency. While oversharing can sometimes be a bit of a problem with me. I do think that keeping grudges and secrets between people can be detrimental to a stable and desirable relationship – whether platonic, romantic, or sexual. Informed consent after all requires information, and you cannot get that if you hide things from people.
+
+One of the most toxic impulses I see in people, irrespective of age or status, is the desire to obscure information and personal issues, with the expectation that you should “know” already such information. As an autistic person I despise this, because I have lots of trouble being able to understand what people mean or imply. Sometimes I can make mistakes – even with my capacity for empathy and self-reflection, which certainly prevents me from doing something horrible. Sometimes an explicit 'no' is better than expecting the other person to guess. The worst impulse, however, is often using experiences or interactions and intentionally reframing them to make them seem duplicitous or fit an implied 'narrative'.
+
 ### Scientific Education and Communication
+
+I am a scientific anarchist as well. Scientific anarchism is, evidently, the application of anarchism to scientist. It is about questioning all forms of scientific authority or expertise, choosing to emphasise the “anything goes” nature of the scientific method instead of any one specific established mentality.
+
+Because of this, I care deeply about the democratisation of education and science. Science should be for all as it's the only existing tool for learning about the world reliably. It is a crime that only I and a few others get to experience the privilege of doing research. It is part of what makes me love teaching.
+
+Communication is also important. So much misinformation about what science originates from the capitalist incentive to sensationalise and produce. This applies to all forms of communication as well. Whether it be “publish or perish” influencing people to discourage review/reproduction and encourage the presentation of exclusively novel findings, to the media oversimplifying and obscuring scientific concepts to appeal to a “general audience”. We should not be hiding information from people and nor should we be pretending that knowledge exists where it does not (string theory … string theory is such a good example of this.)
 
 ### Children's Rights and Parenting
 
+As someone who is passionate about education, I also have some strong opinions about the correct way to do parenting – which is that it shouldn't exist.
+
+I advocate for what I call the MECS model. It stands for 'Made for children, Expertly-designed, Community-oriented, and built on Standards.' This model of education and pastoral care seeks to centre the experience of the children (or adults) being educated, using a curriculum designed by a consensus of experts in the relevant field and pedagogy, is done in a commune-first manner, and is built on consistent, regular standards.
+
+Children *should* be raised communally. The notion that parents should individually raise their own kids is an impulse developed from Modern Christianity. Communal raising of children helps ensure all children have equal access to opportunities as well as prevent child abuse – as it is *much* easier to vet and monitor a teacher or pastoral care specialist than a parent.
+
+Despite that, children should be given their own individual experience with education. While at a base level, education in all fields is a good thing, at a certain stage of academic development we should be encouraging children to flourish in the areas that they are skilled in. We should encourage children to explore, experiment, tinker, and design. Technology shouldn't be designed for convenience and efficiency but instead modularity and modification. Hiding complex processes behind nice little boxes can prevent people from truly understanding the technology they interact with – which is just another form of alienation.
+
 ## Action in the Real World
+
+I am just one person, and even more I'm currently in a period of my life where I'm focused on self-improvement over political action. As I really need to get fit, financially stable, and mentally well enough to get to the point where I can handle political action.
+
+But irrespective I still do some things that I can.
 
 ### Environmentalism
 
+I am already a vegetarian and care for both a cat and two plants. While I'm not an expert in horticulture or animal care, I do think it's morally good to help support life where you can.
+
+I try to live as eco-friendly as I can within my means. When I buy food I always buy in bulk, at locations that don't sell items in temporary packaging and using permanent storage methods like glass jars.
+
+Maintaining and keeping items that I already have is much more important to me than disposing and updating my possessions. Most of my computers either are 10+ years old or last up to 10+ years. 
+
+I also try to bike or walk to work when I can, even walking in the rain. Not only is it healthier it's also great for the environment. When I do need to drive I use a small car.
+
+Power and water usage is the one area that I slag in.
+
 ### Education
+
+Education is one of my career goals and is central to both my desired occupation and my action. Knowledge is power – and I try to impart my knowledge to anyone willing to hear. It's not just because I'm trying to boast. It's because I think sharing experiences is crucial for human intellectual development. At the same time I often like challenging my friends to think more deeply about their personal views as a means to make myself and themselves better people.
+
+Currently, I mostly do university tutoring and in the off-semesters I help the various clubs I'm a part of run more smoothly, to create a better university environment.
 
 ### Unions
 
+I am an on-and-off with the NTEU as a casual worker. I have also acted as a representative for students to advocate for their wellbeing and inclusion.
+
+The most notable examples were mostly over my undergrad where I was occasionally a course representative and sometimes the executive for representing ALL non-HDR or postgraduate students at my research school/university. I certainly made my professor's lives hell in my attempts to negotiate better conditions with them.
+
 ### Mutual Aid
 
-### Advocacy
+I can be quite insistent on helping people in times of need, mainly friends. Whether it be carpooling, financial support, or allowing them to have a home to sleep in. It can be rather difficult as a PhD student because I really wish I could support people more, but due to my small finances I already am at max capacity.
+
+Every time I have no money to give to a homeless person on the street I curse the system even more. It breaks my heart that these people don't have the resources to get help and I can't do it either.
+
+### Advocacy and Electoralism
+
+Back in 2024 I was loosely involved in the Palestine Encampment, mainly it was just donating water.
+
+In the first half of 2025 I spent a lot of my time advocating for the Australian Greens during the WA and federal elections. I personally vote for any socialist party when it comes to election season.
+
+In the second half of 2025 I was much more involved in non-violent direct action, specifically fighting against woodside at the tail end of the Disrupt Burrup Hub campaign. I hope to do more environmentalist activism in the future, especially more disruptive actions.
 
 ### Hacktivism
 
+Currently, I don't do any hacktivism. But I've considered it given my skills in computer science. But that's something to consider later in the future.
+
+Of course, I keep all of this intentionally vague or sanitised – both because I really am not that interesting of a person (especially to law enforcement) and also to protect myself/others (though they probably already know all about me and my friends!).
