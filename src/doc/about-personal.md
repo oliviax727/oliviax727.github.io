@@ -85,8 +85,7 @@ a:active {
 
 ### Games
 
-### Other Interests
+### Arts and Crafts // Tinkering
 
-- DIY flags
-- Clubs
+### Clubs and Volunteering
 
