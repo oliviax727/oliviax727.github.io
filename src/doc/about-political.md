@@ -98,11 +98,11 @@ I am of course skimming heavily over the details, mainly because this isn't mean
 
 Below is a graph of leftist ideologies I use to explain the diversity of left-wing ideologies, and what counts as what. Consider it a “political compass” for leftism:
 
-[]
+![Leftist Ideologies Map](../img/assets/Ideologies%20New.png)
 
 Below is another graph, this time focusing specifically on anarchist ideologies:
 
-[]
+![Anarchism Map](../img/assets/Ideologies%20Anarchy.png)
 
 ### Recommended Reading
 
