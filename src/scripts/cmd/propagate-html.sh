@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Propagate changes from the content template file to every file in the html directory
 (
     html_files=(src/html/*.html)
@@ -7,7 +8,7 @@
     for html in "${html_files[@]}"
     do
         if [ "$html" != "src/html/main.html" ]; then
-            echo "$local_html_file" > $html
+            echo "$local_html_file" > "$html"
         fi
     done
 )

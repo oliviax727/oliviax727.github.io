@@ -1,4 +1,4 @@
-import Parser from "rss-parser";
+import type Parser from "rss-parser";
 import type { TaskEither } from "fp-ts/TaskEither";
 export interface EntryURL {
     name: string;

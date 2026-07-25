@@ -21,7 +21,7 @@
 		"@eslint/js": "^10.0.1",
 		"@html-eslint/eslint-plugin": "^0.62.0",
 		"@html-eslint/parser": "^0.62.0",
-		"browserify": "^17.0.1",
+		"esbuild": "^0.25.9",
 		"eslint": "^10.5.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-functional": "^10.0.0",
@@ -30,12 +30,12 @@
 		"globals": "^17.7.0",
 		"jiti": "^2.7.0",
 		"prettier": "3.9.1",
-		"terser": "^5.48.0",
 		"ts-node": "^10.9.2",
 		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.61.1"
 	},
 	"allowScripts": {
-		"fsevents@2.3.3": true
+		"fsevents@2.3.3": true,
+		"esbuild@0.25.12": true
 	}
 }

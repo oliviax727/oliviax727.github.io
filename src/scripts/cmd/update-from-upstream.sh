@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Force pull git changes from the website template (upstream)
 (
     # Fetch changes from upstream
