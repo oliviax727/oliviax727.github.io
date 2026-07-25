@@ -178,7 +178,7 @@ class BoneMiner {
 		Storer.setCookie("g", gold);
 		Storer.setCookie("l", level);
 
-		if (!quiet) {
+		if (quiet) {
 			console.log("Saved bones: b=" + bones + ", g=" + ", l=" + level);
 		}
 	}
