@@ -102,7 +102,11 @@ const entryConfig = {
 		functional.configs.externalVanillaRecommended,
 	],
 	languageOptions: {
+		parser: tseslint.parser,
 		parserOptions: {
+			projectService: {
+				allowDefaultProject: ["src/scripts/entry.js"],
+			},
 			sourceType: "module",
 			allowImportExportEverywhere: true,
 		},
