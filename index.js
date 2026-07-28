@@ -41,6 +41,7 @@ window.BoneMiner = BoneMiner;
 
 window.onload = () => {
 	Navigator.initPage();
+	BoneMiner.initMiner();
 };
 
 document.addEventListener("oncrunch", () => {

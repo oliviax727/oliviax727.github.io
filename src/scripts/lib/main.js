@@ -59,7 +59,7 @@ export class Navigator {
 			} finally {
 				console.log("Switched to section: " + section);
 			}
-			console.log("Cookies = " + document.cookie);
+			//console.log("Cookies = " + document.cookie);
 		}
 
 		// Load the page

@@ -1,12 +1,29 @@
 import { Storer } from "./helpers.js";
 
-class BoneMiner {
-	static timer = null;
-	static timeInterval = 1000;
+class BoneMinerData {
+	counter = 10;
+	level = 0;
+	timer = null;
 
+	constructor() {
+		// Set the timer
+		this.timer = window.setInterval(() => {
+			if (this.level <= 0) {
+				return;
+			} else if (this.level > this.counter) {
+				BoneMiner.dig4Bones();
+				this.counter = 10;
+			} else {
+				this.counter--;
+			}
+		}, 100);
+	}
+}
+
+class BoneMiner {
 	// ===== BONES ===== //
 
-	// Funny-Haha Bone Counter. Bones reset on page load
+	// Mine for fossils in the footer of the webpage! Bones reset on page load
 	static dig4Bones(makealert = false) {
 		var bones, gold, find;
 
@@ -20,7 +37,7 @@ class BoneMiner {
 
 		find = Math.random();
 
-		if (find < 0.005) {
+		if (find < 0.01) {
 			if (makealert) {
 				alert("You've struck gold!");
 			}
@@ -38,7 +55,7 @@ class BoneMiner {
 		}
 
 		// Print cookies to terminal iff an alert has been made
-		BoneMiner.saveBones(makealert);
+		BoneMiner.saveBones(makealert && find <= 0.5);
 	}
 
 	static createAutoMiner(override = false) {
@@ -50,21 +67,24 @@ class BoneMiner {
 		let upgradebutton = document.getElementById("upgrade-auto");
 		let level = document.getElementById("count-level");
 
-		if (bones.innerHTML >= 100 || override) {
+		if (
+			level.innerHTML == 0 &&
+			window.BoneMinerData.level == 0 &&
+			(bones.innerHTML >= 100 || override)
+		) {
 			console.log("Creating Miner ...");
+
 			if (!override) {
 				bones.innerHTML = parseInt(bones.innerHTML) - 100;
 			}
-			BoneMiner.timer = window.setInterval(
-				BoneMiner.dig4Bones,
-				BoneMiner.timeInterval,
-			);
+
 			createbutton.hidden = true;
 			upgradebutton.hidden = false;
 			level.innerHTML = 1;
-		}
+			window.BoneMinerData.level++;
 
-		BoneMiner.saveBones();
+			BoneMiner.saveBones();
+		}
 	}
 
 	static upgradeAutoMiner(noalert = false, override = false) {
@@ -73,19 +93,19 @@ class BoneMiner {
 		let gold = document.getElementById("count-gold");
 		let level = document.getElementById("count-level");
 
-		if (level.innerHTML == "Max") {
+		if (level.innerHTML == 11) {
 			return;
 		}
 
 		if ((gold.innerHTML >= 1 && bones.innerHTML >= 500) || override) {
-			if (BoneMiner.timeInterval <= 100) {
-				BoneMiner.timeInterval = 1;
+			if (window.BoneMinerData.level >= 11) {
+				window.BoneMinerData.level = 11;
 				if (!noalert) {
 					alert("Miner Fully Upgraded!");
 				}
 				document.getElementById("upgrade-auto").hidden = true;
 			} else {
-				BoneMiner.timeInterval -= 100;
+				window.BoneMinerData.level++;
 			}
 
 			console.log("Upgrading Miner ...");
@@ -95,18 +115,9 @@ class BoneMiner {
 				gold.innerHTML = parseInt(gold.innerHTML) - 1;
 				bones.innerHTML = parseInt(bones.innerHTML) - 500;
 			}
-			window.clearInterval(BoneMiner.timer);
-			BoneMiner.timer = window.setInterval(
-				BoneMiner.dig4Bones,
-				BoneMiner.timeInterval,
-			);
 
-			if (level.innerHTML == 11) {
-				level.innerHTML = "Max";
-			}
+			BoneMiner.saveBones();
 		}
-
-		BoneMiner.saveBones();
 	}
 
 	static loadBones() {
@@ -114,10 +125,6 @@ class BoneMiner {
 		let level = parseInt(Storer.getCookie("l"));
 		const bones = parseInt(Storer.getCookie("b"));
 		const gold = parseInt(Storer.getCookie("g"));
-
-		if (level === "Max") {
-			level == 11;
-		}
 
 		if (isNaN(level)) {
 			level = 0;
@@ -145,8 +152,9 @@ class BoneMiner {
 	static resetBones() {
 		console.log("Resetting Game");
 
-		// Clear autominer BoneMiner.timer
-		window.clearInterval(BoneMiner.timer);
+		// Reset static variables
+		window.BoneMinerData.level = 0;
+		window.BoneMinerData.counter = 10;
 
 		// Reset Buttons
 		document.getElementById("upgrade-auto").hidden = true;
@@ -169,10 +177,6 @@ class BoneMiner {
 		let gold = document.getElementById("count-gold").innerHTML;
 		let level = document.getElementById("count-level").innerHTML;
 
-		if (level === "Max") {
-			level = 11;
-		}
-
 		// Set cookies
 		Storer.setCookie("b", bones);
 		Storer.setCookie("g", gold);
@@ -181,6 +185,22 @@ class BoneMiner {
 		if (quiet) {
 			console.log("Saved bones: b=" + bones + ", g=" + ", l=" + level);
 		}
+	}
+
+	static clearAllTimers() {
+		var id = window.setTimeout(function () {}, 0);
+
+		while (id--) {
+			window.clearTimeout(id);
+		}
+	}
+
+	static initMiner() {
+		// Clear all pre-existing timers
+		BoneMiner.clearAllTimers();
+
+		// Create a new data object (and set the timer)
+		window.BoneMinerData = new BoneMinerData();
 	}
 }
 

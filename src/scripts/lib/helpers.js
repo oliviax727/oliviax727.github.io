@@ -212,7 +212,6 @@ export class Encoder {
 		return new Map(
 			protoMap.map(([key, val]) => {
 				const unBool = Encoder.decombineBools(val);
-				console.log(unBool);
 				return [key, { read: unBool[0], dismissed: unBool[1] }];
 			}),
 		);
