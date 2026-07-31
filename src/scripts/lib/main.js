@@ -43,13 +43,6 @@ export class Navigator {
 				BoneMiner.loadBones();
 				_callback();
 
-				// Reload MathJax after new content is loaded
-				if (self.MathJax?.typesetPromise) {
-					self.MathJax.typesetPromise().catch((err) =>
-						console.log("MathJax error:", err),
-					);
-				}
-
 				document.dispatchEvent(new Event("pageLoaded"));
 			} catch (error) {
 				console.log(

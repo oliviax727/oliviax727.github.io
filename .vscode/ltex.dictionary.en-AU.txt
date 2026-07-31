@@ -13,3 +13,4 @@ Babelify
 Federath
 Tantacrul
 WIPs
+MathJax

@@ -3,8 +3,7 @@
 .centerdiv {
 	background-color: var(--dark-gray);
 	position: relative;
-	display: block;
-	display:inline-block;
+	display: inline-block;
 	padding: 1%;
 	box-sizing: border-box;
 	height: auto;

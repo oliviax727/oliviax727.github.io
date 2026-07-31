@@ -141,3 +141,15 @@
   display: table-cell;
   text-align: left;
 }
+
+.rss-feed-max {
+	display: inline;
+}
+
+.rss-feed-min {
+	display: inline;
+}
+
+.loading-text {
+	color: var(--dark-gray);
+}

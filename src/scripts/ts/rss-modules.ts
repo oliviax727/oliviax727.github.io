@@ -173,6 +173,10 @@ const sortFeed = (entryList: readonly Entry[]): Entry[] =>
 			return +a.data.dismissed - +b.data.dismissed;
 		} else if (a.date !== undefined && b.date !== undefined) {
 			return +b.date - +a.date;
+		} else if (a.date !== undefined) {
+			return -1;
+		} else if (b.date !== undefined) {
+			return 1;
 		} else {
 			return b.uuid.localeCompare(a.uuid);
 		}
