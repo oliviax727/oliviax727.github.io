@@ -38,3 +38,8 @@ img {
 	padding: 0;
   	margin: 0;
 }
+
+#sidebar i {
+	font-size: smaller;
+	white-space: pre-line;
+}
